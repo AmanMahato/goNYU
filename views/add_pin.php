@@ -3,9 +3,9 @@ require_once 'access.php';
 ?>
 <html>
 	<head>
-		<title>impressions - Add Pins</title>
-		<link href="/impressions/css/default.css" rel="stylesheet" />
-		<script src="/impressions/js/jquery.js"></script>
+		<title>goNYU</title>
+		<link href="/goNYU/css/default.css" rel="stylesheet" />
+		<script src="/goNYU/js/jquery.js"></script>
 		<script src="http://malsup.github.com/jquery.form.js"></script>
 		<script>
 			$(document).ready(function(){
@@ -24,7 +24,7 @@ require_once 'access.php';
 					if (data.errorcode == 1) {
 						$("#errmsg").html("<p>" + data.errormsg + "</p>").show();
 					} else {
-						window.location.replace('/impressions/views/my_pins.php');
+						window.location.replace('/goNYU/views/my_pins.php');
 					}
             },'json');
 			});
@@ -32,7 +32,7 @@ require_once 'access.php';
 	</head>
 	<body>
 		<header><h1><a href="kk"></a></h1></header>
-			<form id="addpins" method="post" action="/impressions/php/createpin.php" enctype="multipart/form-data">
+			<form id="addpins" method="post" action="/goNYU/php/createpin.php" enctype="multipart/form-data">
 				<table>
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
 					<tr><td><label>Description</label></td><td><textarea name="description"></textarea></td></tr>

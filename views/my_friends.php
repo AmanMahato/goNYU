@@ -61,7 +61,7 @@ include_once '../php/queries.php';
 			});
 		</script> 
 </head>
-<title>impressions - Friend List</title>
+<title>goNYU</title>
 <body>
 
 <header id="header">
@@ -70,22 +70,22 @@ include_once '../php/queries.php';
 			<table>
 				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
 				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/impressions/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/impressions/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/impressions/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
-				<a href="/impressions/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
-                <a href="/impressions/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
+                <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
 		</a>
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/impressions/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/impressions/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/impressions/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/impressions/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
 </form>
 
 
@@ -121,7 +121,7 @@ Enter invite message:
 	$result1 = get_friends_list();
 	while($row1 = mysql_fetch_array($result1))
 	{
-		echo "<a href = 'http://localhost/impressions/views/user_profile.php?username=$row1[0]'> $row1[1] $row1[2] </a>";
+		echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'> $row1[1] $row1[2] </a>";
 
 	$result2 = get_user_details($row1[0]);
 	$row = mysql_fetch_array($result2);

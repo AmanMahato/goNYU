@@ -9,17 +9,17 @@ $uname = isset($_SESSION['uname'])?$_SESSION['uname']:0;
 <html>
 	<head>
 		<title></title>
-		<link href="/impressions/css/default.css" rel="stylesheet" />
-		<script src="/impressions/js/jquery.js"></script>
-		<script src="/impressions/js/custom.js"></script>
-		<script src="/impressions/js/jquery.form.js"></script>
+		<link href="/goNYU/css/default.css" rel="stylesheet" />
+		<script src="/goNYU/js/jquery.js"></script>
+		<script src="/goNYU/js/custom.js"></script>
+		<script src="/goNYU/js/jquery.form.js"></script>
 		<script>
 		var board_id = <?php echo $board_id;?>;
 		var board_name = "<?php echo $board_name;?>";
 		var board_uname = "<?php echo $board_uname;?>";
 		var user_id = "<?php echo $uname;?>";
 
-		document.title = "impressions - Pins of Board "+board_name;
+		document.title = "goNYU - Pins of Board "+board_name;
 
 			$(document).ready(function() {
 				var $pins = $("#pins");
@@ -90,22 +90,22 @@ $uname = isset($_SESSION['uname'])?$_SESSION['uname']:0;
 			<table>
 				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
 				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/impressions/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/impressions/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/impressions/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
-				<a href="/impressions/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
-                <a href="/impressions/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
+                <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
 		</a>
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/impressions/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/impressions/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/impressions/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/impressions/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
 </form>
 <?php if(strtolower($uname) == strtolower($board_uname)) {?>
 		<table stlyle="width=100%">
@@ -113,7 +113,7 @@ $uname = isset($_SESSION['uname'])?$_SESSION['uname']:0;
 				<td><button class="toggle_add togglebar menubutton" style="text-align:left;">Add Pins</button></td>
 			</tr>
 		</table>
-		<form id="add_pin" method="post" action="/impressions/php/createpin.php" enctype="multipart/form-data">
+		<form id="add_pin" method="post" action="/goNYU/php/createpin.php" enctype="multipart/form-data">
 			<table>
 				<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
 				<tr><td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td></tr>

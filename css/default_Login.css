@@ -200,7 +200,7 @@ body {
 
 form {
 	background-color: #9F6
-	background: url(/impressions/css/images/form-background.png);
+	background: url(/goNYU/css/images/form-background.png);
 	padding: 20px;
 	position: relative;
 	display:table;
@@ -245,7 +245,7 @@ div.show-pin{
 	font-size: 15px;
 	border: 1px solid #339933;
 	border-radius: 10px; 
-	background: url(/impressions/css/images/pin-background.png);
+	background: url(/goNYU/css/images/pin-background.png);
 	background-size: 100%, 100%;
 
 	font-family: tahoma;
@@ -297,7 +297,7 @@ div.show-pin:hover {
 	background-position: 10px center;
 	color: #D8000C;
 	background-color: #FFBABA;
-	background-image: url('/impressions/css/images/error.png');
+	background-image: url('/goNYU/css/images/error.png');
 	border-radius: 5px;
 	text-align: justify;
 }
@@ -310,7 +310,7 @@ div.show-pin:hover {
 	background-position: 10px center;
 	color: #4F8A10;
 	background-color: #DFF2BF;
-	background-image: url('/impressions/css/images/ok.png');
+	background-image: url('/goNYU/css/images/ok.png');
 	border-radius: 5px;
 	text-align: justify;
 }
@@ -323,7 +323,7 @@ div.show-pin:hover {
 	background-position: 10px center;
 	color: #00529B;
 	background-color: #BDE5F8;
-	background-image: url('/impressions/css/images/info.png');
+	background-image: url('/goNYU/css/images/info.png');
 	border-radius: 5px;
 	text-align: justify;
 }
@@ -458,7 +458,7 @@ input[type=submit].removebutton:active, button.removebutton:active {
 }
 input[type=submit].likedButton, button.likedButton {
 	/*background-color: black;*/
-	background-image: url('/impressions/css/images/liked.png');
+	background-image: url('/goNYU/css/images/liked.png');
 	background-repeat: no-repeat;
 		/*border-top: 1px solid #abbbcc;*/
 	/*border-left: 1px solid #a7b6c7;*/
@@ -491,7 +491,7 @@ input[type=submit].likedButton:active, button.likedButton:active {
 
 input[type=submit].unlikedButton, button.unlikedButton {
 	/*background-color: black;*/
-	background-image: url('/impressions/css/images/unliked.png');
+	background-image: url('/goNYU/css/images/unliked.png');
 	background-repeat: no-repeat;
 	/*border-top: -3px solid #abbbcc;*/
 	/*border-left: 1px solid #a7b6c7;*/
@@ -575,7 +575,7 @@ input[type=submit].unlikedButton:active, button.unlikedButton:active {
 
 button.unpin {
 	/*background-color: black;*/
-	background-image: url('/impressions/css/images/unpin.png');
+	background-image: url('/goNYU/css/images/unpin.png');
 	background-repeat: no-repeat;
 	border-top: 1px solid #abbbcc;
 	border-left: 1px solid #a7b6c7;
@@ -617,7 +617,7 @@ div.show-pin2{
 	font-size: 12px;
 	border: 1px solid brown;
 	border-radius: 25px; 
-	background: url(/impressions/css/images/pin-background.png);
+	background: url(/goNYU/css/images/pin-background.png);
 	background-size: 100%, 100%;
 
 }

@@ -22,7 +22,7 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 							$("#errmsg2").html("<p class='ui-info'>" + data.errormsg + "</p>").show();
 						} else {
 							alert("Invite Sent");
-							document.location = "/impressions/views/user_profile.php?username=<?php echo $uname; ?>";
+							document.location = "/goNYU/views/user_profile.php?username=<?php echo $uname; ?>";
 						}
 					} ,'json');
 				});
@@ -38,7 +38,7 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 
 						} else {
 							alert("Friend Removed");
-							document.location = "/impressions/views/user_profile.php?username=<?php echo $uname; ?>";
+							document.location = "/goNYU/views/user_profile.php?username=<?php echo $uname; ?>";
 						}
 					} ,'json');
 				});
@@ -54,7 +54,7 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 
 						} else {
 							alert("Friend Added");
-							document.location = "/impressions/views/user_profile.php?username=<?php echo $uname; ?>";
+							document.location = "/goNYU/views/user_profile.php?username=<?php echo $uname; ?>";
 						}
 					} ,'json');
 				});
@@ -70,7 +70,7 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 
 						} else {
 							alert("Invite Rejected");
-							document.location = "/impressions/views/user_profile.php?username=<?php echo $uname; ?>";
+							document.location = "/goNYU/views/user_profile.php?username=<?php echo $uname; ?>";
 						}
 					} ,'json');
 				});
@@ -102,7 +102,7 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 			});
 		</script>
 </head>
-<title>impressions - <?php if($_GET) echo $_GET['username']; else echo "My"?> Profile</title>
+<title>goNYU<?php if($_GET) echo $_GET['username']; else echo "My"?> Profile</title>
 <body>
 
 <header id="header">
@@ -111,22 +111,22 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 			<table>
 				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
 				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/impressions/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/impressions/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/impressions/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
-				<a href="/impressions/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
-<a href="/impressions/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
+<a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
 		</a>
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/impressions/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/impressions/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/impressions/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/impressions/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
 </form>
 
 
@@ -260,7 +260,7 @@ echo $B;
 			if($row1[1]=="Pending")
 			{
 				//echo "$row1[0]-----$row1[1]------$row1[2]!!!!";
-				echo "<a href = 'http://localhost/impressions/views/user_profile.php?username=$row1[0]'>$row1[0]</a> - \"$row1[2]\"<br/>";
+				echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'>$row1[0]</a> - \"$row1[2]\"<br/>";
 			}
 		}
 		echo '<div id="errmsg1" />';
@@ -271,7 +271,7 @@ echo $B;
 		{
 			if($row2[1]=="Rejected")
 			{
-				echo "<a href = 'http://localhost/impressions/views/user_profile.php?username=$row2[0]'> $row2[0] </a> - \"$row2[2]\"<br/>";
+				echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row2[0]'> $row2[0] </a> - \"$row2[2]\"<br/>";
 			}
 		}
 	}

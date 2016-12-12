@@ -22,10 +22,8 @@ $.fn.extend({
 			max: options && !options.scroll ? 10 : 150
 		}, options);
 		
-		// if highlight is set to false, replace it with a do-nothing function
 		options.highlight = options.highlight || function(value) { return value; };
 		
-		// if the formatMatch option is not specified, then use formatItem for backwards compatibility
 		options.formatMatch = options.formatMatch || options.formatItem;
 		
 		return this.each(function() {

@@ -5,11 +5,11 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 ?>
 <html>
 	<head>
-		<title>impressions - Pin</title>
-		<link href="/impressions/css/default.css" rel="stylesheet" />
-		<script src="/impressions/js/jquery.js"></script>
-		<script src="/impressions/js/jquery.form.js"></script>
-		<script src="/impressions/js/custom.js"></script>
+		<title>goNYU</title>
+		<link href="/goNYU/css/default.css" rel="stylesheet" />
+		<script src="/goNYU/js/jquery.js"></script>
+		<script src="/goNYU/js/jquery.form.js"></script>
+		<script src="/goNYU/js/custom.js"></script>
 		<script type="text/javascript">
 			var pin_id = <?php echo $pin_id; ?>;
 			var user_id = "<?php echo $user_id; ?>";
@@ -106,22 +106,22 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 			<table>
 				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
 				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/impressions/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/impressions/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/impressions/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
-				<a href="/impressions/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
-<a href="/impressions/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
+<a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
 		</a>
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/impressions/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/impressions/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/impressions/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/impressions/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
 </form>		<table stlyle="width=100%">
 			<tr>
 				<td><button class="toggle_repin menubutton" style="text-align:left;">Re-Pin</button></td>
@@ -142,7 +142,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 
 
 
-		<form id="repin" class="toggleform" method="post" action="/impressions/php/repin.php">
+		<form id="repin" class="toggleform" method="post" action="/goNYU/php/repin.php">
 			<table>
 					<input type="text" name = "root_pin_id" hidden />
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
@@ -170,7 +170,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 			</table>
 		</form>
 		<!-- Comments are handeled here -->
-		<form id="post_comments" style="margin:auto;" method="post" action="/impressions/php/createcomment.php">
+		<form id="post_comments" style="margin:auto;" method="post" action="/goNYU/php/createcomment.php">
 			<input type="hidden" id="comment_pin_id" name="pin_id" value="<?php echo $pin_id; ?>">
 			<table style="width:100%">
 				<tr><td colspan="2" style="text-align:left;"><input type="text" name="message" style="width:100%;"/></td></tr>

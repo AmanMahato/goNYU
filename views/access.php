@@ -15,15 +15,15 @@ if(!isset($uname)){
 <html>
 	<head>
 		<title>Welcome to goNYU!</title>
-		<link href="/impressions/css/default_Login.css" rel="stylesheet" />
-		<script src="/impressions/js/jquery.js"></script>
+		<link href="/goNYU/css/default_Login.css" rel="stylesheet" />
+		<script src="/goNYU/js/jquery.js"></script>
 		<script type="text/javascript">
 			var self = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>";
 			$(document).ready(function() {
 				$("#loginform").submit(function(event) {
 					event.preventDefault();
 					$("#errmsg").hide();
-					$.post('/impressions/php/validate_user.php', $(this).serialize(), function(data) {
+					$.post('/goNYU/php/validate_user.php', $(this).serialize(), function(data) {
 
 						if (data.errorcode == 1) {
 							$("#errmsg").html("<p>" + data.errormsg + "</p>").show();
@@ -50,7 +50,7 @@ if(!isset($uname)){
 			<br />
 		</div>
 		<div style="text-align: center;">
-			<a href="/impressions"><img src="/impressions/css/images/logo_large.png" alt="logo" height="20%" width="40%"/></a>
+			<a href="/goNYU"><img src="/goNYU/css/images/logo_large.png" alt="logo" height="20%" width="40%"/></a>
 			<form id="loginform" method="post">
             <h1 class="entry-title" align="center"><font color="#FFFFFF"> Login </font> </h1>
 				<table>

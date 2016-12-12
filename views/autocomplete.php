@@ -26,9 +26,6 @@
 	}
 	
 	$result = mysql_query($sql);
-	// or die()
-	/*$sql1="SELECT * FROM company_detail WHERE Com_Id = '$com_id'";
-			$result = mysql_query($sql1);*/
 	
 	if($result)
 	{
@@ -37,10 +34,6 @@
 			$fname=$row['fname'];
 			$lname=$row['lname'];
 			$user_id=$row['user_id'];
-			
-			/*$sql="SELECT * FROM company_detail WHERE Com_Id = '$com_id'";
-			$result = mysql_query($sql);
-			$row = mysql_fetch_assoc($result)*/
 			
 			echo $fname." ".$lname." - \"@".$user_id."\"\n";
 						
