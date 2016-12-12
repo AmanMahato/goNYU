@@ -10,23 +10,7 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
 		<script src="/goNYU/js/custom.js"></script>
 		<script>
 		var uname = "<?php echo $uname; ?>";
-		// function makepin (title,filename,tags){
-		// 	pintext = "<div class='ui-widget-content show-pin ui-corner-all'>";
-		// 	pintext += "<lable>"+title+"</lable>";
-		// 	pintext += "<br /><br />";
-		// 	pintext += "<img class = 'show-pin' src='/goNYU/images/"+filename+"' alt='"+filename+"'>";
-		// 	//pintext += "<p>"+tags+"</p>";
-		// 	pintext += "</div>";
-		// 	return pintext;
-		// }
 			$(document).ready(function() {
-				// var $pins = $("#pins");
-				// $.post("../php/show_pins.php", {view_mode:"user",uname:uname}, function(data) {
-				// 	for (var i = 0; i < data.length; i++) {
-				// 		var pin = jQuery.parseJSON(data[i])
-				// 		$pins.prepend(makepin(pin.title,pin.fpath,pin.tags));
-				// 	}
-				// },'json');
 		var $pins = $("#pins");
 		loadPins($pins,{view_mode:"user", uname:uname});
 
@@ -41,8 +25,7 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
         					$("#toggle_boards").slideToggle();
         				});
         			});
-        			$(".toggle_menu").hide();
-        			
+        			$(".toggle_menu").hide();        			
 			});
 
 		</script>
@@ -52,11 +35,11 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
 	<h1>
 		<a>
 			<table>
-				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+				<a class="addbutton menu_button" id="menu_boards">Diary</a>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
 <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
@@ -64,12 +47,12 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>		<div id="pins"></div>
 		<div id="temp" hidden />
 	</body>

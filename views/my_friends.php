@@ -68,11 +68,11 @@ include_once '../php/queries.php';
 	<h1>
 		<a>
 			<table>
-				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+				<a class="addbutton menu_button" id="menu_boards">Diary</a>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
                 <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
@@ -80,12 +80,12 @@ include_once '../php/queries.php';
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>
 
 

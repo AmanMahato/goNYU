@@ -36,9 +36,9 @@ require_once 'access.php';
 				<table>
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
 					<tr><td><label>Description</label></td><td><textarea name="description"></textarea></td></tr>
-					<tr><td><label>Pinboard</label></td><td><select name='pinboard_id' form='addpins' id="boards"/></td></tr>
-					<tr><td>Upload Method</td><td><label>By URL</label><input type="radio" name="upload_method" id="url_upload" value="url" checked><label>By File</label><input type="radio" name="upload_method" id="file_upload" value="file" ></td></tr>
-					<tr id="url_pic_box"><td><label>Picture URL</label></td><td><input type="text" name="url_pic" value = "<?php echo urldecode($_GET['image_location']);?>"/></td></tr>
+					<tr><td><label>Diary</label></td><td><select name='pinboard_id' form='addpins' id="boards"/></td></tr>
+					<tr><td>Upload Method</td><td><label>Image Link</label><input type="radio" name="upload_method" id="url_upload" value="url" checked><label>Upload Image</label><input type="radio" name="upload_method" id="file_upload" value="file" ></td></tr>
+					<tr id="url_pic_box"><td><label>Image URL</label></td><td><input type="text" name="url_pic" value = "<?php echo urldecode($_GET['image_location']);?>"/></td></tr>
 					<tr id="url_site_box"><td><label>Site URL</label></td><td><input type="text" name="url_site"/></td></tr>
 					<tr><td><label>Tags</label></td><td><input type="text" name="tags"/></td></tr>
 					<tr><td><input type="submit"/></td></tr>

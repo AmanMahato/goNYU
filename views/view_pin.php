@@ -104,11 +104,11 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 	<h1>
 		<a>
 			<table>
-				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+				<a class="addbutton menu_button" id="menu_boards">Diary</a>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
 <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
@@ -116,12 +116,12 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>		<table stlyle="width=100%">
 			<tr>
 				<td><button class="toggle_repin menubutton" style="text-align:left;">Re-Pin</button></td>
@@ -164,10 +164,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 				<tr><td  style="text-align:center;" colspan=2><img id="pin_pic" src="" style=""/></td></tr>
 				<tr><td>Description: </td> <td  style="text-align:center;"><p id="pin_desc" /></td></tr>
 				<tr><td>Tags: </td><td style="text-align:center;"><div id="pin_tags" ></div></td></tr>
-				<!-- <tr><td><a id="pin_pic_url" target="_blank">  Pic URL  </a><a id="pin_site_url" target="_blank">  Site URL  </a></td> -->
-				<!-- <tr><td><p id="pin_site_url"/></td></tr> -->
-				<!-- <tr><td>Total Likes</td><td><p id="tlikes"/></tr> -->
-			</table>
+				</table>
 		</form>
 		<!-- Comments are handeled here -->
 		<form id="post_comments" style="margin:auto;" method="post" action="/goNYU/php/createcomment.php">

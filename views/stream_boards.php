@@ -132,11 +132,11 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 	<h1>
 		<a>
 			<table>
-				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+				<a class="addbutton menu_button" id="menu_boards">Diary</a>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
                 <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
@@ -144,18 +144,18 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>			<!-- <div style="text-align:left;"> -->
 			
 			<table stlyle="width=100%">
 			<tr>
-				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Board</button></td>
-				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Board</button></td>
+				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Diary</button></td>
+				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Diary</button></td>
 			</tr>
 		</table>
 		
@@ -164,7 +164,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 			<form id="add_board">
 				<table border=1>
 					<tr>
-						<td><label>Board Name</label></td><td><input type="text" name="name"/></td>
+						<td><label>Diary Name</label></td><td><input type="text" name="name"/></td>
 					</tr>
 					<tr>
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td>
@@ -189,7 +189,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 			<form id="delete_board">
 				<table border=1>
 					<tr>
-						<td><label>Board Name</label></td><td><select name="board_name" id="delete_board_name"/></td>
+						<td><label>Diary Name</label></td><td><select name="board_name" id="delete_board_name"/></td>
 					</tr>
 					<tr>
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description" disabled></textarea></td>
@@ -214,7 +214,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 				<td style="width:95%">
 					<section>
 						<nav style="width:100%">
-							<h3 id="board_title">Boards in Stream </h3>
+							<h3 id="board_title">Diary Associated With Stream </h3>
 							<ul style="width: 100%">
 							<div id="boards-list"></div>
 							</ul>

@@ -66,7 +66,7 @@ require_once 'access.php';
 						}
 						else {
 							loadStreams ($streams,$streams_desc,$delete_stream);
-							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Stream  added successfully</p>").show().fadeOut(5000);
+							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Interest  added successfully</p>").show().fadeOut(5000);
 							$("#add_stream").slideToggle("slow");
 						}
 					}, 'json');
@@ -81,7 +81,7 @@ require_once 'access.php';
 						}
 						else {
 							loadStreams ($streams,$streams_desc,$delete_stream);
-							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Stream  deleted successfully</p>").show().fadeOut(5000);
+							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Interest  deleted successfully</p>").show().fadeOut(5000);
 							$("#delete_stream").slideToggle("slow");
 						}
 					}, 'json');
@@ -122,11 +122,11 @@ require_once 'access.php';
 	<h1>
 		<a>
 			<table>
-				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a>
+				<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+				<a class="addbutton menu_button" id="menu_boards">Diary</a>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
                 <a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
@@ -134,23 +134,23 @@ require_once 'access.php';
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form><table stlyle="width=100%">
 			<tr>
-				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Stream</button></td>
-				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Stream</button></td>
+				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Interest</button></td>
+				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Interest</button></td>
 			</tr>
 		</table>
 <!--<h3 class="toggle_add" style="text-align:left;">Add Stream</h3>-->
 				<form id="add_stream" class="toggleform">
 					<table border=1>
 						<tr>
-							<td><label>Stream Name</label></td><td><input type="text" name="name"/></td>
+							<td><label>Interest Name</label></td><td><input type="text" name="name"/></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td>
@@ -171,7 +171,7 @@ require_once 'access.php';
 				<form id="delete_stream" class="toggleform">
 					<table border=1>
 						<tr>
-							<td><label>Stream Name</label></td><td><select id="stream_name" name="stream_name"></select></td>
+							<td><label>Interest Name</label></td><td><select id="stream_name" name="stream_name"></select></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description" disabled></textarea></td>
@@ -196,7 +196,7 @@ require_once 'access.php';
 				<td style="width:80%">
 					<section class='clear'>
 						<nav style="width:100%">
-							<h3 >My Streams</h3>
+							<h3 >My Interest</h3>
 							<ul style="width: 100%">
 							<div id="streams-list"></div>
 							</ul>

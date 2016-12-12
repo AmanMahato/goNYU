@@ -48,22 +48,22 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
     		<h1>
     			<a>
     				<table>
-    					<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
-    					<a class="addbutton menu_button" id="menu_boards">Boards</a>
-    					<a href="/photobook/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-    					<a href="/photobook/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-    					<a href="/photobook/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a></td>
+    					<td><a class="addbutton menu_button" id="menu_pins">Photos</a>
+    					<a class="addbutton menu_button" id="menu_boards">Diary</a>
+    					<a href="/photobook/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Interest</a>
+    					<a href="/photobook/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
+    					<a href="/photobook/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a></td>
     				</table>
     			</a>
     		</h1>
     	</header>
     	<form class="toggle_menu" id="toggle_pins">
-    		<a href="/photobook/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-			<a href="/photobook/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+    		<a href="/photobook/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+			<a href="/photobook/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
     	</form>
     	<form class="toggle_menu" id="toggle_boards">
-    		<a href="/photobook/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-			<a href="/photobook/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+    		<a href="/photobook/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+			<a href="/photobook/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
     	</form>
     </body>
 </html>
