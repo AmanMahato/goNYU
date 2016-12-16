@@ -1,6 +1,5 @@
 <?php
 include_once 'queries.php';
-
 	$uname = key_exists('uname', $_POST) ? $_POST['uname'] : "";
 	$pwd = key_exists('pwd', $_POST) ? $_POST['pwd'] : "";
 	$fname = key_exists('fname', $_POST) ? $_POST['fname'] : "";
@@ -9,8 +8,6 @@ include_once 'queries.php';
 	$email = key_exists('email', $_POST) ? $_POST['email'] : "";
 	$country = key_exists('country', $_POST) ? $_POST['country'] : "";
 	$language = key_exists('language', $_POST) ? $_POST['language'] : "";
-
-
 	$error = array('errorcode' => 0);
 	$error['errormsg'] = "";
 	if ($uname == "") {
@@ -33,7 +30,6 @@ include_once 'queries.php';
 		$error['errorcode'] = 1;
 		$error['errormsg'] .= "Pick a gender";
 	}	
-
 	if ($error['errorcode'] == 0) {
 		$errmsg = "";
 		if (update_user($uname, $pwd, $fname, $lname, $email, $gender, $language, $country, $errmsg) == FALSE) {
@@ -41,9 +37,5 @@ include_once 'queries.php';
 			$error['errormsg'] = $errmsg;
 		} 
 	}
-
-
-
 	echo json_encode($error);
-
 ?>

@@ -110,7 +110,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">Profile</a>
 				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">Friends</a>
 				<a href="/goNYU/views/search.php" class="addbutton menu_button" id="menu_user">Search</a>
-<a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
+				<a href="/goNYU/php/logout.php" class="addbutton menu_button" id="menu_user">Logout</a></td>
 			</table>
 		</a>
 	</h1>

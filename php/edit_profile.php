@@ -93,12 +93,12 @@ $C = <<<C
 			<table id = "center1">
 				<tr><td>User Name</td><td><input type="text" name="uname" value="$row[0]" readonly/></td></tr>
 				<tr><td>Password</td><td><input type="password" name="pwd" value="$row[7]"/></td></tr>
-				<tr><td>First Name</td><td><input type="text" value="$row[1]" name="fname" /></td></tr>
-				<tr><td>Last Name</td><td><input type="text" name="lname" value="$row[2]"/></td></tr>
-				<tr><td>Gender</td><td>M <input type="radio" name="gender" value="Male" $male_checked/>&nbsp;F<input type="radio" name="gender" value="Female" $female_checked/><br/>I prefer not to declare<input type="radio" name="gender" value="Not declared" $nd_checked/></td></tr>
-				<tr><td>Email</td><td><input type="text" name="email" value="$row[3]"/></td></tr>
-				<tr><td>Language</td><td><input type="text" name="language" value="$row[5]"/></td></tr>
-				<tr><td>Country</td><td><input type="text" name="country" value="$row[6]"/></td></tr>
+				<tr><td>First Name</td><td><input type="text" value="$row[2]" name="fname" /></td></tr>
+				<tr><td>Last Name</td><td><input type="text" name="lname" value="$row[3]"/></td></tr>
+				<tr><td>Gender</td><td>M <input type="radio" name="gender" value="Male" $male_checked/>&nbsp;F<input type="radio" name="gender" value="Female" $female_checked/></td></tr>
+				<tr><td>Email</td><td><input type="text" name="email" value="$row[4]"/></td></tr>
+				<tr><td>Language</td><td><input type="text" name="language" value="$row[9]"/></td></tr>
+				<tr><td>Country</td><td><input type="text" name="country" value="$row[10]"/></td></tr>
 				<tr><td><hr></td><td><hr></td></tr>
 				<tr><td><input value="Save" type="submit" name="save" class="menubutton"/></td><td><input value="Cancel" class="menubutton" type="button" name="save" id="cancel" /></td></tr>		
 			</table>

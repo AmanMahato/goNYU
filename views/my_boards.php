@@ -115,24 +115,23 @@ $("#menu_pins").click(function(){
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
-</form>			<!-- <div style="text-align:left;"> -->
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
+</form>		
 		<table stlyle="width=100%">
 			<tr>
-				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Board</button></td>
-				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Board</button></td>
+				<td><button class="toggle_add togglebar addbutton" style="text-align:left;">Add Diary</button></td>
+				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Diary</button></td>
 			</tr>
 		</table>
-
 			<form id="add_board" class="toggleform">
 				<table border=1>
 					<tr>
-						<td><label>Board Name</label></td><td><input type="text" name="name"/></td>
+						<td><label>Diary Name</label></td><td><input type="text" name="name"/></td>
 					</tr>
 					<tr>
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td>
@@ -156,7 +155,7 @@ $("#menu_pins").click(function(){
 			<form id="delete_board" class="toggleform">
 				<table border=1>
 					<tr>
-						<td><label>Board Name</label></td><td><select name="board_name" id="delete_board_name"/></td>
+						<td><label>Diary Name</label></td><td><select name="board_name" id="delete_board_name"/></td>
 					</tr>
 					<tr>
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description" disabled></textarea></td>

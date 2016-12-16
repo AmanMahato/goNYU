@@ -32,7 +32,7 @@ function makepin (pin,user_id){
 		pintext += "<div><button class='unpin' style='text-align:right;' id='"+pin.pin_id+"unpin' value=''/></div>";
 	}
 	pintext += "</td></tr>";
-	pintext += "	<tr><td  colspan='4' style='text-align:center;'><a><img id='"+pin.pin_id+"pin_pic' src='/impressions/images/"+pin.fpath+"' /></a></td></tr>";
+	pintext += "	<tr><td  colspan='4' style='text-align:center;'><a><img id='"+pin.pin_id+"pin_pic' src='/goNYU/images/"+pin.fpath+"' /></a></td></tr>";
 	pintext += "	<tr><td style='width:25%'><b>Description: </b></td>";
 	pintext += "	<td style='text-align:left;'><p id='"+pin.pin_id+"pin_desc'>"+pin.description+"</p></td></tr>";
 	pintext += "	<tr><td><b>Tags: </b></td>";
@@ -83,7 +83,7 @@ function loadPins($pins,post_vars,user_id){
 			}
 		$(".show-pin").click(function(){
 
-			$("#temp").html("<form id='view_pin' action='/impressions/views/view_pin.php' method='post' hidden> \
+			$("#temp").html("<form id='view_pin' action='/goNYU/views/view_pin.php' method='post' hidden> \
 								<input type='text' name='pin_id'> \
 							</form>");
 			$("#view_pin").find("input").val($(this).attr("id"));
@@ -177,7 +177,7 @@ $.post("../php/show_pins.php", {
 	}, function(data) {
 			var pin = jQuery.parseJSON(data[0]);
 			$("#pin_title").html(pin.title);
-			$("#pin_pic").attr("src","/impressions/images/"+pin.fpath);
+			$("#pin_pic").attr("src","/goNYU/images/"+pin.fpath);
 
 
 			$("#pin_desc").html(pin.description);
@@ -234,7 +234,6 @@ function loadComments($comment_list){
 				// refresh comments
 	$.post("../php/show_comments.php", {view_mode:"pin", pin_id:pin_id}
 		, function(data) {
-		
 		$comment_list.html("");
 		for (var i = 0; i < data.length; i++) {
 			var comment = jQuery.parseJSON(data[i]);
@@ -259,9 +258,6 @@ function loadStreams ($streams,$streams_desc,$delete_stream) {
 			$delete_stream.append("<option value='"+stream.stream_id+"'>"+stream.name+"</option>");
 		}
 		$(".stream").zinoTooltip({follow: true});
-/*			$(".stream").mouseover(function() {
-			$("#show_desc").html($("#"+$(this).attr("id")+"_desc").html());
-		});*/
 		$(".stream").mouseout(function() {
 			$("#show_desc").html("");
 		});

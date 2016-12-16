@@ -224,7 +224,7 @@ C;
 echo $C;
 echo $B;
 	{
-	echo '<br/><h2>Here are your notifications:</h2>';
+	echo '<br/><h2 style="color:green;">Here are your notifications:</h2>';
 	echo '<hr>';
 	$result = friend_requests($_SESSION['uname'], $errmsg);
 	if($result == FALSE)
