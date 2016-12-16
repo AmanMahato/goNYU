@@ -30,8 +30,4 @@ if ($error['errorcode'] == 0)
 }
 
 echo json_encode($error);
-
-
-
-
 ?>

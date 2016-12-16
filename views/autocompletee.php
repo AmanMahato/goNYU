@@ -13,8 +13,7 @@
 	$q=$_GET['q'];
 	$my_data=mysql_real_escape_string($q);
 	
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("dbproject");
+	$db_conn=new mysqli("localhost", "root", "root", "dbproject");
 	
 	if($my_data[0]=="#")
 	{

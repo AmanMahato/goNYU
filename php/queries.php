@@ -1,19 +1,7 @@
 <?php
 
-/**
- * All queries used in the Project
- * 
- * function validate_user($uname, $pwd)
- * create_user($uname, $pwd, $fname, $lname, $email, $gender, &$err_msg)
- * get_pins(&$pins, $conditions, $sort_by)
- * get_boards(&$boards, $conditions, $sort_by)
- * get_streams(&$streams, $conditions, $sort_by)
- * create_pin($pic_path,$user_id,$tags,$url_pic,$url_site,$title,$description,$pinboard_id,$file_ext,&$pic_id,&$pin_id,&$err_msg)
- * create_board($user_id,$name,$description,$comment_privacy,&$board_id,&$err_msg)
- * create_repin($root_pin_id,$user_id,$tags,$title,$pinboard_id,&$pic_id,&$pin_id,&$err_msg)
- */
-
 include_once 'db.php';
+
 function validate_user($uname, $pwd) {
 
 	$return_val = FALSE;
@@ -31,9 +19,9 @@ function validate_user($uname, $pwd) {
 	return $return_val;
 }
 
+
 function create_user($uname, $pwd, $fname, $lname, $email, $gender, &$err_msg) {
 	$con = dbConnect();
-
 	if (!$con) {
 		$err_msg = "Unable to connect to Database";
 		return FALSE;
@@ -43,17 +31,16 @@ function create_user($uname, $pwd, $fname, $lname, $email, $gender, &$err_msg) {
 		$err_msg = "User Name already Exists";
 		return FALSE;
 	}
-
 	if (!mysqli_query($con, "INSERT INTO USER(USER_ID, FNAME, LNAME, EMAIL, GENDER, PASSWORD, STATUS) VALUES('$uname','$fname', '$lname', '$email', '$gender', '$pwd','Y')")) {
 		$err_msg = mysqli_error($con);
 		$result = FALSE;
 	} else if (mysqli_affected_rows($con) == 1) {
 		$result = TRUE;
 	}
-
 	dbClose($con);
 	return $result;
 }
+
 
 function get_pins(&$pins, $conditions, $sort_by) {
 	$con = dbConnect();
@@ -95,6 +82,7 @@ SQL;
 	dbClose($con);
 }
 
+
 function get_if_liked($user_id,$pin_id,&$liked){
 	$con = dbConnect();
 	$sql_count_likes = mysqli_prepare($con, 'SELECT count(*) count FROM likes WHERE `user_id`= ? AND `pin_id`= ?');
@@ -119,7 +107,6 @@ function get_if_liked($user_id,$pin_id,&$liked){
 		dbClose($con);
 		return FALSE;
 	}
-
 	mysqli_stmt_fetch($sql_count_likes);
 	mysqli_stmt_close($sql_count_likes);
 	if($count>0){
@@ -129,9 +116,9 @@ function get_if_liked($user_id,$pin_id,&$liked){
 		$liked = FALSE;
 	}
 	dbClose($con);
-
 	return TRUE;
 }
+
 
 function toggle_like ($user_id,$pin_id,$root_pin_id,$pic_id,&$err_msg){
 	$con = dbConnect();
@@ -151,17 +138,14 @@ function toggle_like ($user_id,$pin_id,$root_pin_id,$pic_id,&$err_msg){
 		dbClose($con);
 		return FALSE;
 	}
-
 	if(!mysqli_stmt_bind_result($sql_count_likes,$count)){
 		$err_msg .= "Cannot execute statement get count like".mysqli_stmt_error($sql_count_likes);
 		dbClose($con);
 		return FALSE;
 	}
-
 	mysqli_stmt_fetch($sql_count_likes);
 	mysqli_stmt_close($sql_count_likes);
 dbClose($con);
-
 $con = dbConnect();
 #--------------------------create/delete pins with pin_id and user_id-----------------------------------------------------
 	if (!$count || $count == 0) {
@@ -170,7 +154,6 @@ $con = dbConnect();
 	else {
 		$sql_toggle_like = mysqli_prepare($con,"DELETE FROM likes WHERE `pin_id` = ? AND `user_id` = ? AND `root_pin_id` = ?");
 	}
-
 	if(!$sql_toggle_like){
 		$err_msg .= "Cannot prepare statement to toggle like".mysqli_stmt_error($sql_toggle_like);
 		dbClose($con);
@@ -186,7 +169,6 @@ $con = dbConnect();
 		dbClose($con);
 		return FALSE;
 	}
-
 	dbClose($con);
 
 $con = dbConnect();
@@ -237,6 +219,7 @@ $con = dbConnect();
 	return TRUE;
 }
 
+
 function get_boards(&$boards, $conditions, $sort_by) {
 	$con = dbConnect();
 	$sql = <<<SQL
@@ -268,6 +251,7 @@ SQL;
 	dbClose($con);
 }
 
+
 function get_streams(&$streams, $conditions, $sort_by) {
 	$con = dbConnect();
 	$sql = <<<SQL
@@ -281,28 +265,23 @@ FROM
   streams 
 WHERE row_id = row_id
 SQL;
-
 	for ($i = 0; $i < count($conditions); $i++) {
 		$condition = $conditions[$i];
 		$sql .= " AND " . $condition['column'] . " " . $condition['operation'] . " " . $condition['value'];
 	}
-
 	if ($sort_by != "") {
 		$sql .= " SORT BY " . $sort_by;
 	}
-
 	$result = mysqli_query($con, $sql);
 	if ($row = mysqli_fetch_all($result, MYSQLI_ASSOC)) {
 		$streams = $row;
 	}
-
 	dbClose($con);
 }
 
-function create_pin($user_id,$tags,$url_pic,$url_site,$title,$description,$pinboard_id,$file_ext,&$pic_id,&$pin_id,&$err_msg){
-	
-	$con = dbConnect();
 
+function create_pin($user_id,$tags,$url_pic,$url_site,$title,$description,$pinboard_id,$file_ext,&$pic_id,&$pin_id,&$err_msg){	
+	$con = dbConnect();
 	$err_msg = "";
 	$sql_create_board = mysqli_prepare ($con,
 		"INSERT INTO pictures(`url_pic`,`url_site`,`user_id`,`title`,`description`) VALUES (?,?,?,?,?)");
@@ -319,9 +298,6 @@ function create_pin($user_id,$tags,$url_pic,$url_site,$title,$description,$pinbo
 		return FALSE;
 	}
 	$pic_id = mysqli_insert_id($con);
-
-
-
 	$sql_create_pin = mysqli_prepare($con,
 		"INSERT INTO pins(`pinboard_id`,`user_id`,`tags`,`picture_id`) VALUES (?,?,?,?)");
 	if(!$sql_create_pin){
@@ -337,9 +313,6 @@ function create_pin($user_id,$tags,$url_pic,$url_site,$title,$description,$pinbo
 		return FALSE;
 	}
 	$pin_id = mysqli_insert_id($con);
-
-
-
 	$sql_update_pic = mysqli_prepare ($con,
 		"UPDATE pictures SET `file_name` = ? WHERE `row_id` = ?");
 	if(!$sql_update_pic){
@@ -376,17 +349,14 @@ function create_pin($user_id,$tags,$url_pic,$url_site,$title,$description,$pinbo
 	return TRUE;
 }
 
-function create_board($uname,$name,$description,$comment_privacy,&$board_id,&$err_msg){
-	
+
+function create_board($uname,$name,$description,$comment_privacy,&$board_id,&$err_msg){	
 	$con = dbConnect();
-
 	$err_msg = "";
-
 	if (mysqli_num_rows(mysqli_query($con, "SELECT row_id FROM pinboards WHERE user_id='$uname' AND board_name='$name'")) > 0) {
 		$err_msg = "Board already Exists";
 		return FALSE;
 	}
-
 	$sql_create_board = mysqli_prepare ($con,
 		"INSERT INTO pinboards(`board_name`,`user_id`,`comment_status`,`description`) VALUES (?,?,?,?)");
 	if(!$sql_create_board){
@@ -402,22 +372,18 @@ function create_board($uname,$name,$description,$comment_privacy,&$board_id,&$er
 		return FALSE;
 	}
 	$board_id = mysqli_insert_id($con);
-	
 	dbClose($con);
 	return TRUE;
 }
 
-function create_stream($uname,$name,$description,$keyword,&$stream_id,&$err_msg){
-	
+
+function create_stream($uname,$name,$description,$keyword,&$stream_id,&$err_msg){	
 	$con = dbConnect();
-
 	$err_msg = "";
-
 	if (mysqli_num_rows(mysqli_query($con, "SELECT row_id FROM streams WHERE user_id='$uname' AND name='$name'")) > 0) {
 		$err_msg = "Stream already Exists";
 		return FALSE;
 	}
-
 	$sql_create_board = mysqli_prepare ($con,
 		"INSERT INTO streams(`name`,`user_id`,`keyword_query`,`description`) VALUES (?,?,?,?)");
 	if(!$sql_create_board){
@@ -438,17 +404,14 @@ function create_stream($uname,$name,$description,$keyword,&$stream_id,&$err_msg)
 	return TRUE;
 }
 
-function delete_board($uname,$board_id,&$rows_affected,&$err_msg){
-	
+
+function delete_board($uname,$board_id,&$rows_affected,&$err_msg){	
 	$con = dbConnect();
-
 	$err_msg = "";
-
 	if (mysqli_num_rows(mysqli_query($con, "SELECT row_id FROM pinboards WHERE user_id='$uname' AND row_id='$board_id'")) == 0) {
 		$err_msg = "Board doesn't Exists for User ID $uname";
 		return FALSE;
 	}
-
 	$sql_delete_board = mysqli_prepare ($con,
 		"Delete FROM pinboards WHERE `user_id`= ? AND `row_id`= ?");
 	if(!$sql_delete_board){
@@ -469,17 +432,14 @@ function delete_board($uname,$board_id,&$rows_affected,&$err_msg){
 	return TRUE;
 }
 
-function delete_stream($uname,$stream_id,&$rows_affected,&$err_msg){
-	
+
+function delete_stream($uname,$stream_id,&$rows_affected,&$err_msg){	
 	$con = dbConnect();
-
 	$err_msg = "";
-
 	if (mysqli_num_rows(mysqli_query($con, "SELECT row_id FROM streams WHERE user_id='$uname' AND row_id='$stream_id'")) == 0) {
 		$err_msg = "Stream doesn't Exists for User ID $uname";
 		return FALSE;
 	}
-
 	$sql_delete_stream = mysqli_prepare ($con,
 		"Delete FROM streams WHERE `user_id`= ? AND `row_id`= ?");
 	if(!$sql_delete_stream){
@@ -500,10 +460,9 @@ function delete_stream($uname,$stream_id,&$rows_affected,&$err_msg){
 	return TRUE;
 }
 
-function create_repin($root_pin_id,$user_id,$tags,$title,$pinboard_id,&$pic_id,&$pin_id,&$err_msg){
-	
-	$con = dbConnect();
 
+function create_repin($root_pin_id,$user_id,$tags,$title,$pinboard_id,&$pic_id,&$pin_id,&$err_msg){	
+	$con = dbConnect();
 	$sql_check_pin = mysqli_prepare($con,
 		"SELECT `row_id`,`picture_id`,count(*) count FROM PINS WHERE `row_id` = ?");
 	if(!$sql_check_pin){
@@ -520,19 +479,15 @@ function create_repin($root_pin_id,$user_id,$tags,$title,$pinboard_id,&$pic_id,&
 		dbClose($con);
 		return FALSE;
 	}
-
 	if(!mysqli_stmt_bind_result($sql_check_pin,$pin_id2,$pic_id,$count)){
 		$err_msg .= "Cannot execute statement check pin".mysqli_stmt_error($sql_check_pin);
 		dbClose($con);
 		return FALSE;
 	}
-
 	mysqli_stmt_fetch($sql_check_pin);
 	mysqli_stmt_close($sql_check_pin);
 	dbClose($con);
-
 	$con = dbConnect();
-
 	$sql_create_pin = mysqli_prepare($con,
 		"INSERT INTO pins(`pinboard_id`,`user_id`,`tags`,`picture_id`,`parent_row_id`) VALUES (?,?,?,?,?)");
 	if(!$sql_create_pin){
@@ -549,15 +504,13 @@ function create_repin($root_pin_id,$user_id,$tags,$title,$pinboard_id,&$pic_id,&
 		return FALSE;
 	}
 	$pin_id = mysqli_insert_id($con);
-
 	dbClose($con);
 	return TRUE;
 }
 
-function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){
-	
-	$con = dbConnect();
 
+function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){	
+	$con = dbConnect();
 	$sql_check_pin = mysqli_prepare($con,
 		"SELECT parent_row_id,picture_id,PICTURES.`file_name`,count(*) count FROM PINS,PICTURES WHERE PICTURES.`row_id` = PINS.`picture_id` AND PINS.`row_id` = ? AND PINS.`user_id` = ?");
 	if(!$sql_check_pin){
@@ -574,7 +527,6 @@ function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){
 		dbClose($con);
 		return FALSE;
 	}
-
 	if(!mysqli_stmt_bind_result($sql_check_pin,$root_pin_id,$pic_id,$pic_fname,$count)){
 		$err_msg .= "Cannot execute statement check pin".mysqli_stmt_error($sql_check_pin);
 		dbClose($con);
@@ -588,9 +540,7 @@ function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){
 		return FALSE;
 	}
 	dbClose($con);
-
 	$con = dbConnect();
-
 	$sql_delete_pin = mysqli_prepare($con,
 		"DELETE FROM pins WHERE `row_id` = ?");
 	if(!$sql_delete_pin){
@@ -632,52 +582,45 @@ function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){
 
 		dbClose($con);
 	}
-
 	return TRUE;
 }
+
 
 function get_comments($pin_id,&$comments) {
 	$con = dbConnect();
 	$return = FALSE;
-
-	$sql = "SELECT message message, created created, pin_id pin_id, row_id comment_id FROM comments WHERE comments.pin_id = '$pin_id'";
-
+# Made some change here on Dec 12, 2016
+	$sql = "SELECT message, created, pin_id, row_id, user_id FROM comments WHERE comments.pin_id = '$pin_id'";
 	$result = mysqli_query($con, $sql);
 	if ($row = mysqli_fetch_all($result, MYSQLI_ASSOC)) {
 		$comments = $row;
 		$return = TRUE;
 	}
-
 	dbClose($con);
 	return $return;
 }
 
-function create_comment($user_id,$message,$pin_id,&$comment_id,&$err_msg){
-	
-	$con = dbConnect();
 
+function create_comment($user_id,$message,$pin_id,&$comment_id,&$err_msg){	
+	$con = dbConnect();
 	$err_msg = "";
 	$sql_create_comment = mysqli_prepare ($con,
 		"INSERT INTO comments(`user_id`,`message`,`pin_id`) VALUES ($user_id,$message,$pin_id)");
-
 	if(!$sql_create_comment){
 		$err_msg = "Cannot prepare statement to create Comment".mysqli_stmt_error($sql_create_comment);
 		dbClose($con);
 		return FALSE;
 	}
-
 	if(!mysqli_stmt_bind_param($sql_create_comment,'ssi',$user_id,$message,$pin_id)){
 		$err_msg .= "Cannot bind statement to create Comment".mysqli_stmt_error($sql_create_comment);
 		dbClose($con);
 		return FALSE;
 	}
-
 	if(!mysqli_stmt_execute($sql_create_comment)){
 		$err_msg .= "Cannot execute statement to create Comment".mysqli_stmt_error($sql_create_comment);
 		dbClose($con);
 		return FALSE;
 	}
-	
 	$comment_id = mysqli_insert_id($con);
 	dbClose($con);
 	return TRUE;
@@ -689,7 +632,7 @@ function create_comment($user_id,$message,$pin_id,&$comment_id,&$err_msg){
 function get_user_details($user)
 {	
 	$con = dbConnect();
-		$sql = <<<SQL
+/*		$sql = <<<SQL
 SELECT
 	user_id, fname, lname, email, gender, language, country
 FROM
@@ -707,28 +650,21 @@ SELECT
 FROM
 	user
 WHERE user_id = '$user';
-SQL;
+SQL;*/
+$sql = "SELECT * FROM user WHERE user_id = '$user'";
 
-	$result = mysql_query($sql) or die(mysql_error());
-	mysql_close();
+	$result = mysqli_query($con,$sql) or die(mysqli_error());
+	mysqli_close($con);
 	return $result;
 }
+
 
 function get_friends_list()
 {
 	$con = dbConnect();
-	$DB = "dbproject";
-	mysql_connect('localhost', 'root', 'root') or die(mysql_error());
-	mysql_select_db("$DB") or die(mysql_error());
-
-	$sql = <<<SQL
-select F.friend_id, fname, lname
-from friends F join user U
-where U.user_id = F.friend_id and F.user_id = '$_SESSION[uname]'
-SQL;
-	
-	$result = mysql_query($sql) or die(mysql_error());
-	mysql_close();
+	$sql = "SELECT F.friend_id, fname, lname FROM friends F join user U where U.user_id = F.friend_id and F.user_id = '$_SESSION[uname]'";
+	$result = mysqli_query($con,$sql) or die(mysqli_error());
+	mysqli_close($con);
 	return $result;
 }
 
@@ -736,13 +672,11 @@ SQL;
 function invite_friend($user, $friend, $messageee, &$err_msg)
 {
 	$con = dbConnect();
-	
 	if (strpos($friend, '@') !== FALSE)
     {
 		$friend = substr($friend,strpos($friend,'@')+1);
 		$friend = substr($friend,0,strlen($friend)-1);
 	}
-	
 	if (!$con) 
 	{
 		$err_msg = "Unable to connect to Database";
@@ -795,8 +729,6 @@ function invite_friend($user, $friend, $messageee, &$err_msg)
 }
 
 
-
-
 function remove_friend($user, $friend, &$err_msg)
 {
 	$con = dbConnect();
@@ -814,7 +746,6 @@ SQL1;
 	$sql2 = <<<SQL2
 DELETE FROM FRIENDS WHERE (USER_ID="$friend" AND FRIEND_ID="$user");
 SQL2;
-
 	if (!mysqli_query($con, $sql1)) 
 	{
 		$err_msg = mysqli_error($con);
@@ -831,21 +762,19 @@ SQL2;
 	return $result;
 }
 
+
 function reject_request($user, $friend, &$err_msg)
 {
 	$con = dbConnect();
-
 	if (!$con) 
 	{
 		$err_msg = "Unable to connect to Database";
 		return FALSE;
 	}
 	$result = FALSE;
-
 	$sql = <<<SQL
 UPDATE friend_request SET STATUS='Rejected' WHERE user_id='$friend' AND friend_id='$user';
 SQL;
-
 	if (!mysqli_query($con, $sql)) 
 	{
 		$err_msg = mysqli_error($con);
@@ -861,14 +790,12 @@ SQL;
 function accept_request($user, $friend, &$err_msg)
 {
 	$con = dbConnect();
-
 	if (!$con) 
 	{
 		$err_msg = "Unable to connect to Database";
 		return FALSE;
 	}
 	$result = FALSE;
-
 	$sql1 = <<<SQL1
 INSERT INTO FRIENDS(USER_ID,FRIEND_ID) VALUES("$user", "$friend");
 SQL1;
@@ -878,7 +805,6 @@ SQL2;
 	$sql3 = <<<SQL3
 DELETE FROM FRIEND_REQUEST WHERE (USER_ID="$user" AND FRIEND_ID="$friend") OR (USER_ID="$friend" AND FRIEND_ID="$user");
 SQL3;
-
 	if (!mysqli_query($con, $sql1)) 
 	{
 		$err_msg = mysqli_error($con);
@@ -904,15 +830,6 @@ SQL3;
 function friend_requests($user, &$err_msg)
 {
 	$con = dbConnect();
-	$DB = "dbproject";
-	mysql_connect('localhost', 'root', '') or die(mysql_error());
-	mysql_select_db("$DB");
-	
-	//if (!$con) 
-	//{
-	//	$err_msg = "Unable to connect to Database";
-	//	return FALSE;
-	//}
 	$result = mysql_query("SELECT user_id, status, message FROM friend_request WHERE friend_id='$user'");
 	if (mysql_num_rows($result)== 0) 
 	{
@@ -921,19 +838,12 @@ function friend_requests($user, &$err_msg)
 	}
 	else 
 		return $result;
+	dbClose($con);
 }
 
 function check_friendship($user, $friend, &$err_msg)
 {
 	$con = dbConnect();
-	$DB = "dbproject";
-	mysql_connect('localhost', 'root', '') or die(mysql_error());
-	mysql_select_db("$DB");
-	//if (!$con) 
-	//{
-	//	$err_msg = 0;
-	//	return;
-	//}
 	$result1=mysql_query("SELECT * FROM friends WHERE (user_id = '$user' AND friend_id = '$friend') OR (user_id = '$friend' AND friend_id = '$user')");
 	if (mysql_num_rows($result1)> 0) 
 	{
@@ -969,14 +879,12 @@ function check_friendship($user, $friend, &$err_msg)
 		$err_msg = 5;
 		return;
 	}
-
 	dbClose($con);
-
 }
+
 
 function update_user($uname, $pwd, $fname, $lname, $email, $gender, $language, $country, &$err_msg) {
 	$con = dbConnect();
-
 	if (!$con) {
 		$err_msg = "Unable to connect to Database";
 		return FALSE;
@@ -986,14 +894,11 @@ function update_user($uname, $pwd, $fname, $lname, $email, $gender, $language, $
 		$err_msg = "User Name does not exist";
 		return FALSE;
 	}
-
 	if (!mysqli_query($con, "UPDATE USER SET PASSWORD ='$pwd',fname='$fname', lname = '$lname',email = '$email',gender = '$gender',LANGUAGE = '$language',country = '$country' WHERE (user_id = '$uname')")) {
 		$err_msg = mysqli_error($con);
 		$result = FALSE;
 	} else 
 		$result = TRUE;
-	
-
 	dbClose($con);
 	return $result;
 }

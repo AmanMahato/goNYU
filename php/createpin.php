@@ -12,7 +12,6 @@ $pinboard_id = key_exists('pinboard_id', $_POST) ? $_POST['pinboard_id'] : "";
 $path = key_exists('file_pic', $_FILES) ? $_FILES['file_pic']['name']: "";
 $file_ext = pathinfo($path, PATHINFO_EXTENSION);
 $upload_method = key_exists('upload_method', $_POST) ? $_POST['upload_method'] : "";
-
 $data = array('errorcode' => 0);
 $data['errormsg'] = "";
 $pin_id = "";

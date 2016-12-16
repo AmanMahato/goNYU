@@ -12,41 +12,7 @@ require_once 'access.php';
 		<link rel="stylesheet" href="/goNYU/css/zino.core.css">
         <link rel="stylesheet" href="/goNYU/css/zino.tooltip.css">
 		<script>
-
-				/*function loadStreams ($streams,$streams_desc,$delete_stream) {
-					$(".stream").remove();
-					$.post("../php/show_streams.php",  {
-						view_mode:"my"
-					}, function(data) {
-						$delete_stream.html("");
-						for (var i = 0; i < data.length; i++) {
-							var stream = jQuery.parseJSON(data[i]);
-							$streams.append("<li id='" + stream.stream_id + "' class='stream'><a title = '<b>Description:</b><br/>"+stream.description+"'>" + stream.name + "</a></li>");
-							$streams_desc.append("<div id='"+stream.stream_id+"_name' hidden>"+stream.name+"</div>");
-							$streams_desc.append("<div id='"+stream.stream_id+"_desc' hidden>"+stream.description+"</div>");
-							$streams_desc.append("<div id='"+stream.stream_id+"_keyword' hidden>"+stream.kquery+"</div>");
-							$delete_stream.append("<option value='"+stream.stream_id+"'>"+stream.name+"</option>");
-						}
-						$(".stream").zinoTooltip({follow: true});
-			/*			$(".stream").mouseover(function() {
-							$("#show_desc").html($("#"+$(this).attr("id")+"_desc").html());
-						});*/
-						/*$(".stream").mouseout(function() {
-							$("#show_desc").html("");
-						});
-						$(".stream").click(function() {
-							var ID = $(this).attr("id");
-							$("#to_submit").find("input[name=stream_id]").val(ID);
-							$("#to_submit").find("input[name=stream_name]").val($("#"+ID+"_name").html());
-							$("#to_submit").submit();
-						});
-						$delete_stream.change(function(){
-						$("#delete_stream").find("textarea").html($("#"+$(this).val()+"_desc").html());
-						$("#delete_stream").find("input[type=text]").val($("#"+$(this).val()+"_keyword").html());
-					});
-					}, 'json')
-			}*/
-
+		
 			$(document).ready(function() {
 
 				var $streams = $("#streams-list");

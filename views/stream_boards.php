@@ -16,45 +16,6 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 		<script>
 		var stream_id = "<?php echo $stream_id; ?>";
 		var stream_name = "<?php echo $stream_name; ?>";
-
-			/*function loadBoards($boards,$boards_desc,$delete_boards) {
-				$(".board").remove();
-				$.post("../php/show_boards.php", {
-					view_mode:"stream",
-					stream_id:stream_id
-				}, function(data) {
-					$delete_boards.html("");
-					for (var i = 0; i < data.length; i++) {
-						var board = jQuery.parseJSON(data[i]);
-						$boards.append("<li id='" + board.board_id + "' class='board'><a>" + board.name + "</a></li>");
-						$boards.append("<div id='"+board.board_id+"_name' hidden>"+board.name+"</div>");
-						$boards.append("<div id='"+board.board_id+"_uname' hidden>"+board.uname+"</div>");
-						$boards_desc.append("<div id='"+board.board_id+"_desc'>"+board.description+"</div>");
-						$boards_desc.append("<div id='"+board.board_id+"_cmnt_status'>"+board.cmnt_status+"</div>");
-						$delete_boards.append("<option value='"+board.board_id+"'>"+board.name+"</option>")
-					}
-					$(".board").mouseover(function() {
-						$("#show_desc").html($("#"+$(this).attr("id")+"_desc").html());
-					});
-					$(".board").mouseout(function() {
-						$("#show_desc").html("");
-					});
-					$(".board").click(function() {
-						var board_id = $(this).attr("id");
-						var board_name = $("#"+board_id+"_name").html();
-						var board_user = $("#"+board_id+"_uname").html();
-						$("#to_submit").find("input[name=board_id]").val(board_id);
-						$("#to_submit").find("input[name=board_name]").val(board_name);
-						$("#to_submit").find("input[name=board_user]").val(board_user);
-						$("#to_submit").submit();
-					});
-					$delete_boards.change(function(){
-						$("#delete_board").find("textarea").html($("#"+$(this).val()+"_desc").html());
-						$("#delete_board").find("input[type=text]").val($("#"+$(this).val()+"_cmnt_status").html());
-					});
-				}, 'json');
-			}*/
-
 			$(document).ready(function() {
 				var $boards = $("#boards-list");
 				var $boards_desc = $("#boards-desc");
@@ -159,9 +120,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 			</tr>
 		</table>
 		
-		
-			<!--<h3 class="toggle_add" style="text-align:left;">Add Board</h3>-->
-			<form id="add_board">
+				<form id="add_board">
 				<table border=1>
 					<tr>
 						<td><label>Diary Name</label></td><td><input type="text" name="name"/></td>
@@ -185,7 +144,6 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 				</table>
 			</form>
 
-			<!--<h3 class="toggle_delete" style="text-align:left;">Delete Board</h3>-->
 			<form id="delete_board">
 				<table border=1>
 					<tr>

@@ -10,8 +10,9 @@ if(isset($_REQUEST["data"]))
 	$searchdata=$_REQUEST["data"];
 else $searchdata="";
 
-mysql_connect("localhost", "root", "");
-mysql_select_db("dbproject");
+#mysql_connect("localhost", "root", "root");
+#mysql_select_db("dbproject");
+new mysqli("localhost", "root", "root","dbproject");
 ?>
 
 

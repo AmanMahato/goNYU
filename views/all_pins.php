@@ -47,12 +47,12 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Photos</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Photos</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>
 		<table><tr></tr></table>
 		<div id="pins"></div>

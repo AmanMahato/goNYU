@@ -26,7 +26,6 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 						}
 					} ,'json');
 				});
-
 				$("#remove_friend").click(function(){
 					$.post('../php/remove_friend.php',{
 						user_id: "<?php echo $uname; ?>"
@@ -42,7 +41,6 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 						}
 					} ,'json');
 				});
-
 				$("#accept").click(function(){
 					$.post('../php/accept_request.php',{
 						invited_user: "<?php echo $uname; ?>"
@@ -58,7 +56,6 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 						}
 					} ,'json');
 				});
-
 				$("#reject").click(function(){
 					$.post('../php/reject_request.php',{
 						invited_user: "<?php echo $uname; ?>"
@@ -74,23 +71,17 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 						}
 					} ,'json');
 				});
-
-
-
 				$("#user_pins_button").click(function(){
 					$("#user_pins").submit();
 				});
-
 				$("#user_boards_button").click(function(){
 					$("#user_boards").submit();
 				});
-
 					$("#menu_pins").click(function(){
         				$(".toggle_menu").not("#toggle_pins").slideUp(500,function(){
         					$("#toggle_pins").slideToggle();
         				});
         			});
-
         			$("#menu_boards").click(function(){
         				$(".toggle_menu").not("#toggle_boards").slideUp(500,function(){
         					$("#toggle_boards").slideToggle();
@@ -104,7 +95,6 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 </head>
 <title>goNYU<?php if($_GET) echo $_GET['username']; else echo "My"?> Profile</title>
 <body>
-
 <header id="header">
 	<h1>
 		<a href="my_pins.php">
@@ -129,12 +119,11 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>
 
-
 <?php
-if($_GET)
+if($_SESSION)
 {
-	$result = get_user_details("{$_GET['username']}");
-	$row = mysql_fetch_array($result);
+	$result = get_user_details("{$_SESSION['uname']}");
+	$row = mysqli_fetch_array($result,MYSQLI_NUM);
 	$location = "../users/".$row[0]."/userprofilepic.jpg";
 $A = <<<A
 		<form action="/" id="center1" style="margin:auto;">
@@ -143,12 +132,12 @@ $A = <<<A
 		</div>
 			<table id="center1">
 				<tr><td><label>User Name</label></td><td>$row[0]</td></tr>
-				<tr><td><label>First Name</label></td><td>$row[1]</td></tr>
-				<tr><td><label>Last Name</label></td><td>$row[2]</td></tr>
-				<tr><td><label>Gender</label></td><td>$row[4]</td></tr>
-				<tr><td><label>Email</label></td><td>$row[3]</td></tr>
-				<tr><td><label>Language</label></td><td>$row[5]</td></tr>
-				<tr><td><label>Country</label></td><td>$row[6]</td></tr>
+				<tr><td><label>First Name</label></td><td>$row[2]</td></tr>
+				<tr><td><label>Last Name</label></td><td>$row[3]</td></tr>
+				<tr><td><label>Gender</label></td><td>$row[5]</td></tr>
+				<tr><td><label>Email</label></td><td>$row[4]</td></tr>
+				<tr><td><label>Language</label></td><td>$row[9]</td></tr>
+				<tr><td><label>Country</label></td><td>$row[10]</td></tr>
 			</table>
 		</form>
 A;
@@ -159,9 +148,6 @@ $B = <<<B
 <input type="text" name="uname" value="$uname" hidden/>
 </form>
 <input value="Show Pins" type="button" id="user_pins_button" class="menubutton"/>
-
-
-
 <form method="post" hidden action="user_boards.php" id="user_boards">
 <input type="text" name="uname" value="$uname" hidden/>
 </form>
@@ -169,8 +155,6 @@ $B = <<<B
 <br/><br/><br/>
 B;
 	echo $B;
-
-
 	$errmsg = NULL;
 	check_friendship($_SESSION['uname'], $_GET['username'], $errmsg);
 	if($errmsg == 0)
@@ -214,14 +198,12 @@ B;
 }
 else
 {
-
 $B = <<<B
 <br/>
 <form action="../php/edit_profile.php" method="post" style="margin:auto;">
 <input value="Edit Profile" type="submit" class="menubutton">
 </form>
 B;
-
 $result = get_user_details("{$_SESSION['uname']}");
 $row = mysql_fetch_array($result);
 $location = "../users/".$_SESSION['uname']."/userprofilepic.jpg";
@@ -243,12 +225,9 @@ $C = <<<C
 C;
 echo $C;
 echo $B;
-
 	{
-
 	echo '<br/><h2>Here are your notifications:</h2>';
 	echo '<hr>';
-	
 	$result = friend_requests($_SESSION['uname'], $errmsg);
 	if($result == FALSE)
 		echo $errmsg;

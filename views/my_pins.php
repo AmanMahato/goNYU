@@ -54,7 +54,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 						$("#errmsg").html(data.errormsg).show().fadeOut(5000);
 					} else {
 						loadPins($pins,{view_mode:"my"},user_id);
-						$("#errmsg").html(data.errormsg+"<p class='ui-success'>Pin added successfully</p>").show().fadeOut(5000);
+						$("#errmsg").html(data.errormsg+"<p class='ui-success'>Photos added successfully</p>").show().fadeOut(5000);
 						$("#add_pin").slideToggle("slow");
 					}
             	},'json');
@@ -107,11 +107,10 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 				<table>
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
 					<tr><td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td></tr>
-					<tr><td><label>Pinboard</label></td><td><select name='pinboard_id' form='add_pin' id="boards"/></td></tr>
+					<tr><td><label>Diary</label></td><td><select name='pinboard_id' form='add_pin' id="boards"/></td></tr>
 					<tr><td>Upload Method</td><td><label>Image Link</label><input type="radio" name="upload_method" id="url_upload" value="url"><label>Upload Image</label><input type="radio" name="upload_method" id="file_upload" value="file" checked="true"></td></tr>
 					<tr id="file_box"><td><input type="file" name="file_pic"/></td></tr>
 					<tr id="url_pic_box"><td><label>Image URL</label></td><td><input type="text" name="url_pic"/></td></tr>
-					<tr id="url_site_box"><td><label>Web-Site URL</label></td><td><input type="text" name="url_site"/></td></tr>
 					<tr><td><label>Tags</label></td><td><input type="text" name="tags"/></td></tr>
 					<tr><td><input type="submit" class="addbutton" value="Upload"/></td></tr>
 				</table>

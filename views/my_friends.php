@@ -2,8 +2,6 @@
 require_once 'access.php';
 include_once '../php/queries.php';
 ?>
-
-
 <html>
 <head>
   <link href="../css/default.css" rel="stylesheet">
@@ -87,13 +85,6 @@ include_once '../php/queries.php';
 	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
 	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>
-
-
-
-
-
-
-
 <h3 class='toggle_add addbutton' id="flip">Click to add new friends!!</h3>
 <?php   
 if(isset($_POST['invited_user']))
@@ -119,12 +110,12 @@ Enter invite message:
 <?php
 	
 	$result1 = get_friends_list();
-	while($row1 = mysql_fetch_array($result1))
+	while($row1 = mysqli_fetch_array($result1,MYSQLI_NUM))
 	{
 		echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'> $row1[1] $row1[2] </a>";
 
 	$result2 = get_user_details($row1[0]);
-	$row = mysql_fetch_array($result2);
+	$row = mysqli_fetch_array($result2,MYSQLI_NUM);
 	$location = "../users/".$row[0]."/userprofilepic.jpg";
 $A = <<<A
 <form action="/" id="cuser" >
@@ -144,7 +135,7 @@ $A = <<<A
 <br/>		
 A;
 	echo $A;
-	}
+}
 
 ?>
 </body>

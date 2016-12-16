@@ -13,8 +13,7 @@
 	$q=$_GET['q'];
 	$my_data=mysql_real_escape_string($q);
 	
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("dbproject");
+	$db_con=new mysqli("localhost", "root", "root", "dbproject");
 	
 	if($my_data[0]!="@")
 		$sql="SELECT fname,lname,user_id FROM user WHERE user_id NOT IN (select friend_id from friends where user_ID like '".$uname."') AND user_id NOT IN (select user_id from friends where friend_id like '".$uname."') AND (fname like '%$my_data%' OR lname like '%$my_data%') AND user_id !='".$uname."'" ;
@@ -24,8 +23,6 @@
 		$my_data = substr($my_data,1);
 		$sql="SELECT fname,lname,user_id FROM user WHERE user_id NOT IN (select friend_id from friends where user_ID like '".$uname."') AND user_id NOT IN (select user_id from friends where friend_id like '".$uname."') AND user_id like '%$my_data%' AND user_id !='".$uname."'";
 	}
-	
-	$result = mysql_query($sql);
 	
 	if($result)
 	{

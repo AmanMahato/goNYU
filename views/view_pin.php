@@ -134,7 +134,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 			<table>
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
 					<tr><td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td></tr>
-					<tr><td><label>Pinboard</label></td><td><select name='pinboard_id' form='add_pin' id="unpin_boards"/></td></tr>
+					<tr><td><label>Diary</label></td><td><select name='pinboard_id' form='add_pin' id="unpin_boards"/></td></tr>
 					<tr><td><label>Tags</label></td><td><input type="text" name="tags"/></td></tr>
 					<tr><td><input type="submit" class="addbutton" value="Add Pin"/></td></tr>
 				</table>
@@ -146,7 +146,7 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 			<table>
 					<input type="text" name = "root_pin_id" hidden />
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
-					<tr><td><label>Pinboard</label></td><td><select name='pinboard_id' form='repin' id="repin_boards"/></td></tr>
+					<tr><td><label>Diary</label></td><td><select name='pinboard_id' form='repin' id="repin_boards"/></td></tr>
 					<tr><td><label>Tags</label></td><td><input type="text" name="tags"/></td></tr>
 					<tr><td><input type="submit" class="addbutton" value="Add Pin"/></td></tr>
 				</table>
