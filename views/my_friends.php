@@ -11,17 +11,12 @@ include_once '../php/queries.php';
 		<script>
 		$(document).ready(function(){
 		 $(".tag").autocomplete("autocomplete.php", {
-		
 				select : function(event,ui){
 					alert(ui);
 				}
 			});
-
 		});
-
 		</script>  
-
- <?php /*		<script src="../js/jquery.js"></script> */?>
  		<script>
 			$(document).ready(function(){
 				$("#invited_message").hide();
@@ -36,13 +31,9 @@ include_once '../php/queries.php';
 						} else
 							$("#invited_message").html("<p class='ui-success'>" + $("#invited_message").find("[name=invited_user]").val() + " has been invited!!</p>").show().fadeOut(3000);
 					}, 'json');
-//---------------------------------------------------------------------------------------------------------------
 				});
-
  				$("#flip").click(function(){
     				$("#invited_message").slideToggle("slow");
-			
-    			
   				});
   				$("#menu_pins").click(function(){
         				$(".toggle_menu").not("#toggle_pins").slideUp(500,function(){
@@ -92,8 +83,6 @@ if(isset($_POST['invited_user']))
 	echo $_POST["invited_user"]." has been invited!!";
 }
 ?>
-
-
 <form action="/" method="post" id="invited_message" style="margin:auto;">
 Enter user name:
 <input name="invited_user" type="text" class="tag">
@@ -101,19 +90,14 @@ Enter invite message:
 <input name="messageee" type="text" />
 <input value="Invite" type="submit">
 </form>
-<!-- </div> -->
 <div hidden id="errmsg"></div>
-
 <br/><br/>
-
 <h2>Here are all your friends!!</h2>
 <?php
-	
 	$result1 = get_friends_list();
 	while($row1 = mysqli_fetch_array($result1,MYSQLI_NUM))
 	{
-		echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'> $row1[1] $row1[2] </a>";
-
+		echo "<a href = 'http://localhost:8888/goNYU/views/user_profile.php?username=$row1[0]'> $row1[1] $row1[2] </a>";
 	$result2 = get_user_details($row1[0]);
 	$row = mysqli_fetch_array($result2,MYSQLI_NUM);
 	$location = "../users/".$row[0]."/userprofilepic.jpg";
@@ -124,12 +108,12 @@ $A = <<<A
 </div>
 	<table style="margin:auto;">
 		<tr><td><label>User Name</label></td><td>$row[0]</td></tr>
-		<tr><td><label>First Name</label></td><td>$row[1]</td></tr>
-		<tr><td><label>Last Name</label></td><td>$row[2]</td></tr>
-		<tr><td><label>Gender</label></td><td>$row[4]</td></tr>
-		<tr><td><label>Email</label></td><td>$row[3]</td></tr>
-		<tr><td><label>Language</label></td><td>$row[5]</td></tr>
-		<tr><td><label>Country</label></td><td>$row[6]</td></tr>
+		<tr><td><label>First Name</label></td><td>$row[2]</td></tr>
+		<tr><td><label>Last Name</label></td><td>$row[3]</td></tr>
+		<tr><td><label>Gender</label></td><td>$row[5]</td></tr>
+		<tr><td><label>Email</label></td><td>$row[4]</td></tr>
+		<tr><td><label>Language</label></td><td>$row[9]</td></tr>
+		<tr><td><label>Country</label></td><td>$row[10]</td></tr>
 	</table>
 </form>
 <br/>		

@@ -120,9 +120,9 @@ $uname = isset($_GET['username'])?$_GET['username']:"";
 </form>
 
 <?php
-if($_SESSION)
+if($_GET)
 {
-	$result = get_user_details("{$_SESSION['uname']}");
+	$result = get_user_details("{$_GET['uname']}");
 	$row = mysqli_fetch_array($result,MYSQLI_NUM);
 	$location = "../users/".$row[0]."/userprofilepic.jpg";
 $A = <<<A
@@ -147,11 +147,11 @@ $B = <<<B
 <form method="post" hidden action="user_pins.php" id="user_pins">
 <input type="text" name="uname" value="$uname" hidden/>
 </form>
-<input value="Show Pins" type="button" id="user_pins_button" class="menubutton"/>
+<input value="Show Photos" type="button" id="user_pins_button" class="menubutton"/>
 <form method="post" hidden action="user_boards.php" id="user_boards">
 <input type="text" name="uname" value="$uname" hidden/>
 </form>
-<input value="Show Boards" type="button" id="user_boards_button" class="menubutton">
+<input value="Show Diary" type="button" id="user_boards_button" class="menubutton">
 <br/><br/><br/>
 B;
 	echo $B;
@@ -194,7 +194,6 @@ B;
 		echo '</form>';
 		echo "<div id='errmsg2' />";
 	}
-
 }
 else
 {
@@ -205,7 +204,7 @@ $B = <<<B
 </form>
 B;
 $result = get_user_details("{$_SESSION['uname']}");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result,MYSQLI_NUM);
 $location = "../users/".$_SESSION['uname']."/userprofilepic.jpg";
 $C = <<<C
 		<form action="/" style="margin:auto;">
@@ -214,12 +213,12 @@ $C = <<<C
 		</div>
 			<table style="margin:auto;">
 				<tr><td><label>User Name</label></td><td>$row[0]</td></tr>
-				<tr><td><label>First Name</label></td><td>$row[1]</td></tr>
-				<tr><td><label>Last Name</label></td><td>$row[2]</td></tr>
-				<tr><td><label>Gender</label></td><td>$row[4]</td></tr>
-				<tr><td><label>Email</label></td><td>$row[3]</td></tr>
-				<tr><td><label>Language</label></td><td>$row[5]</td></tr>
-				<tr><td><label>Country</label></td><td>$row[6]</td></tr>
+				<tr><td><label>First Name</label></td><td>$row[2]</td></tr>
+				<tr><td><label>Last Name</label></td><td>$row[3]</td></tr>
+				<tr><td><label>Gender</label></td><td>$row[5]</td></tr>
+				<tr><td><label>Email</label></td><td>$row[4]</td></tr>
+				<tr><td><label>Language</label></td><td>$row[9]</td></tr>
+				<tr><td><label>Country</label></td><td>$row[10]</td></tr>
 			</table>
 		</form>
 C;
@@ -234,11 +233,10 @@ echo $B;
 	else
 	{
 		echo "<h4>These people have sent you friend requests:</h4>";
-		while($row1 = mysql_fetch_array($result))
+		while($row1 = mysqli_fetch_array($result,MYSQLI_NUM))
 		{
 			if($row1[1]=="Pending")
 			{
-				//echo "$row1[0]-----$row1[1]------$row1[2]!!!!";
 				echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'>$row1[0]</a> - \"$row1[2]\"<br/>";
 			}
 		}
@@ -246,7 +244,7 @@ echo $B;
 		$result = friend_requests($_SESSION['uname'], $errmsg);
 		echo "<br/>";
 		echo "<h4>You have rejected these people's friend requests:</h4>";
-		while($row2 = mysql_fetch_array($result))
+		while($row2 = mysqli_fetch_array($result,MYSQLI_NUM))
 		{
 			if($row2[1]=="Rejected")
 			{

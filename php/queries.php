@@ -44,8 +44,7 @@ function create_user($uname, $pwd, $fname, $lname, $email, $gender, &$err_msg) {
 
 function get_pins(&$pins, $conditions, $sort_by) {
 	$con = dbConnect();
-	$sql = <<<SQL
-SELECT 
+	$sql ="SELECT 
   pictures.title title,
   pictures.description description,
   pictures.total_likes tlikes,
@@ -59,12 +58,7 @@ SELECT
   pictures.url_pic pic_url,
   pictures.url_site site_url,
   pins.user_id uname
-FROM
-  pins,
-  pictures 
-WHERE pictures.row_id = pins.picture_id
-SQL;
-
+FROM pins,pictures WHERE pictures.row_id = pins.picture_id";
 	for ($i = 0; $i < count($conditions); $i++) {
 		$condition = $conditions[$i];
 		$sql .= " AND " . $condition['column'] . " " . $condition['operation'] . " " . $condition['value'];
@@ -146,8 +140,8 @@ function toggle_like ($user_id,$pin_id,$root_pin_id,$pic_id,&$err_msg){
 	mysqli_stmt_fetch($sql_count_likes);
 	mysqli_stmt_close($sql_count_likes);
 dbClose($con);
+
 $con = dbConnect();
-#--------------------------create/delete pins with pin_id and user_id-----------------------------------------------------
 	if (!$count || $count == 0) {
 		$sql_toggle_like = mysqli_prepare($con,"INSERT INTO likes(`pin_id`,`user_id`,`root_pin_id`) VALUES (?,?,?)");
 	}
@@ -172,8 +166,6 @@ $con = dbConnect();
 	dbClose($con);
 
 $con = dbConnect();
-#--------------------------------------------------------------------------
-	
 	$sql_update_llikes = mysqli_prepare($con,"UPDATE pins SET `local_likes` = (SELECT COUNT(*) from LIKES where `pin_id` = pins.`row_id`) WHERE `row_id` = ?");
 	
 	if(!$sql_update_llikes){
@@ -191,12 +183,9 @@ $con = dbConnect();
 		dbClose($con);
 		return FALSE;
 	}
-
 	dbClose($con);
 
 $con = dbConnect();
-#-----------------------------------------------------------------------------------------------
-	
 	$sql_update_tlikes = mysqli_prepare($con,"UPDATE pictures SET `total_likes` = (SELECT COUNT(*) from LIKES where `root_pin_id` = ?) WHERE `row_id` = ?");
 	
 	if(!$sql_update_tlikes){
@@ -214,48 +203,33 @@ $con = dbConnect();
 		dbClose($con);
 		return FALSE;
 	}
-
 	dbClose($con);
+
 	return TRUE;
 }
 
 
 function get_boards(&$boards, $conditions, $sort_by) {
 	$con = dbConnect();
-	$sql = <<<SQL
-SELECT 
-  board_name name,
-  description description,
-  comment_status cmnt_status,
-  user_id uname,
-  row_id board_id 
-FROM
-  pinboards 
-WHERE row_id = row_id
-SQL;
-
+	$sql = "SELECT board_name name,description description,comment_status cmnt_status,user_id uname,row_id board_id FROM pinboards WHERE row_id = row_id";
 	for ($i = 0; $i < count($conditions); $i++) {
 		$condition = $conditions[$i];
 		$sql .= " AND " . $condition['column'] . " " . $condition['operation'] . " " . $condition['value'];
 	}
-
 	if ($sort_by != "") {
 		$sql .= " SORT BY " . $sort_by;
 	}
-
 	$result = mysqli_query($con, $sql);
 	if ($row = mysqli_fetch_all($result, MYSQLI_ASSOC)) {
 		$boards = $row;
 	}
-	
 	dbClose($con);
 }
 
 
 function get_streams(&$streams, $conditions, $sort_by) {
 	$con = dbConnect();
-	$sql = <<<SQL
-SELECT 
+	$sql = "SELECT 
   name name,
   description description,
   keyword_query kquery,
@@ -263,8 +237,7 @@ SELECT
   row_id stream_id 
 FROM
   streams 
-WHERE row_id = row_id
-SQL;
+WHERE row_id = row_id";
 	for ($i = 0; $i < count($conditions); $i++) {
 		$condition = $conditions[$i];
 		$sql .= " AND " . $condition['column'] . " " . $condition['operation'] . " " . $condition['value'];
@@ -455,7 +428,6 @@ function delete_stream($uname,$stream_id,&$rows_affected,&$err_msg){
 		return FALSE;
 	}
 	$rows_affected = mysqli_stmt_affected_rows($sql_delete_stream);
-	
 	dbClose($con);
 	return TRUE;
 }
@@ -589,7 +561,6 @@ function unpin($pin_id,$user_id,&$pic_id,&$pic_fname,&$root_pin_id,&$err_msg){
 function get_comments($pin_id,&$comments) {
 	$con = dbConnect();
 	$return = FALSE;
-# Made some change here on Dec 12, 2016
 	$sql = "SELECT message, created, pin_id, row_id, user_id FROM comments WHERE comments.pin_id = '$pin_id'";
 	$result = mysqli_query($con, $sql);
 	if ($row = mysqli_fetch_all($result, MYSQLI_ASSOC)) {
@@ -627,32 +598,10 @@ function create_comment($user_id,$message,$pin_id,&$comment_id,&$err_msg){
 }
 
 
-//########################################################################################################
-
 function get_user_details($user)
 {	
 	$con = dbConnect();
-/*		$sql = <<<SQL
-SELECT
-	user_id, fname, lname, email, gender, language, country
-FROM
-	user
-WHERE '$_SESSION[uname]' = user_id
-SQL;
-
-	$DB = "dbproject";
-	mysql_connect('localhost', 'root', 'root') or die(mysql_error());
-	mysql_select_db("$DB") or die(mysql_error());
-
-	$sql = <<<SQL
-SELECT
-	user_id, fname, lname, email, gender, language, country, password
-FROM
-	user
-WHERE user_id = '$user';
-SQL;*/
-$sql = "SELECT * FROM user WHERE user_id = '$user'";
-
+	$sql = "SELECT * FROM user WHERE user_id = '$user'";
 	$result = mysqli_query($con,$sql) or die(mysqli_error());
 	mysqli_close($con);
 	return $result;
@@ -796,15 +745,9 @@ function accept_request($user, $friend, &$err_msg)
 		return FALSE;
 	}
 	$result = FALSE;
-	$sql1 = <<<SQL1
-INSERT INTO FRIENDS(USER_ID,FRIEND_ID) VALUES("$user", "$friend");
-SQL1;
-	$sql2 = <<<SQL2
-INSERT INTO FRIENDS(USER_ID,FRIEND_ID) VALUES("$friend","$user");
-SQL2;
-	$sql3 = <<<SQL3
-DELETE FROM FRIEND_REQUEST WHERE (USER_ID="$user" AND FRIEND_ID="$friend") OR (USER_ID="$friend" AND FRIEND_ID="$user");
-SQL3;
+	$sql1 = "INSERT INTO FRIENDS(USER_ID,FRIEND_ID) VALUES('$user', '$friend')";
+	$sql2 = "INSERT INTO FRIENDS(USER_ID,FRIEND_ID) VALUES('$friend','$user')";
+	$sql3 = "DELETE FROM FRIEND_REQUEST WHERE (USER_ID='$user' AND FRIEND_ID='$friend') OR (USER_ID='$friend' AND FRIEND_ID='$user')";
 	if (!mysqli_query($con, $sql1)) 
 	{
 		$err_msg = mysqli_error($con);
@@ -830,8 +773,9 @@ SQL3;
 function friend_requests($user, &$err_msg)
 {
 	$con = dbConnect();
-	$result = mysql_query("SELECT user_id, status, message FROM friend_request WHERE friend_id='$user'");
-	if (mysql_num_rows($result)== 0) 
+	$sql="SELECT user_id, status, message FROM friend_request WHERE friend_id='$user'";
+	$result = mysqli_query($con,$sql);
+	if (mysqli_num_rows($result)== 0) 
 	{
 		$err_msg = "No pending notifications";		
 		return FALSE;
@@ -844,35 +788,35 @@ function friend_requests($user, &$err_msg)
 function check_friendship($user, $friend, &$err_msg)
 {
 	$con = dbConnect();
-	$result1=mysql_query("SELECT * FROM friends WHERE (user_id = '$user' AND friend_id = '$friend') OR (user_id = '$friend' AND friend_id = '$user')");
+	$result1=mysqli_query($con,"SELECT * FROM friends WHERE (user_id = '$user' AND friend_id = '$friend') OR (user_id = '$friend' AND friend_id = '$user')");
 	if (mysql_num_rows($result1)> 0) 
 	{
 		//Already friends
 		$err_msg = 1;
 		return;
 	}
-	$result2=mysql_query("SELECT * FROM friend_request WHERE user_id='$user' and friend_id='$friend' and status='Pending'");
+	$result2=mysqli_query($con,"SELECT * FROM friend_request WHERE user_id='$user' and friend_id='$friend' and status='Pending'");
 	if (mysql_num_rows($result2) > 0) 
 	{
 		//You have sent an invite
 		$err_msg = 2;
 		return;
 	}
-	$result3=mysql_query("SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Pending'");
+	$result3=mysqli_query($con,"SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Pending'");
 	if (mysql_num_rows($result3) > 0) 
 	{
 		//Invitation is sent by friend
 		$err_msg = 3;
 		return;
 	}
-	$result4=mysql_query("SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Rejected'");
+	$result4=mysqli_query($con,"SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Rejected'");
 	if (mysql_num_rows($result4)> 0) 
 	{
 		//Not a friend BUT invitation is sent by friend AND you have rejected this request.
 		$err_msg = 4;
 		return;
 	}
-	$result5=mysql_query("SELECT * FROM friend_request WHERE (friend_id='$friend' AND user_id='$user') OR (friend_id='$user' AND user_id='$friend')");
+	$result5=mysqli_query($con,"SELECT * FROM friend_request WHERE (friend_id='$friend' AND user_id='$user') OR (friend_id='$user' AND user_id='$friend')");
 	if (mysql_num_rows($result5) == 0) 
 	{
 		//Not a friend AND no invite
