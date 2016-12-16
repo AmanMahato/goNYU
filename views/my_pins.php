@@ -13,11 +13,9 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 		var user_id = "<?php echo $user_id; ?>";
 			$(document).ready(function() {
 				var $pins = $("#pins");
-
 				$("#file_box").show();
 				$("#url_pic_box").hide();
 				$("#url_site_box").hide();
-
 				$("#file_upload").click(function(){
 					$("#file_box").show();
 					$("#url_pic_box").hide();

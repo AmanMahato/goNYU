@@ -124,8 +124,8 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>		<table stlyle="width=100%">
 			<tr>
-				<td><button class="toggle_repin menubutton" style="text-align:left;">Re-Pin</button></td>
-				<td><button class="toggle_unpin menubutton" style="text-align:left;">Un-Pin</button></td>
+			<!-- 	<td><button class="toggle_repin menubutton" style="text-align:left;">Re-Pin</button></td>
+				<td><button class="toggle_unpin menubutton" style="text-align:left;">Un-Pin</button></td> -->
 			</tr>
 		</table>
 

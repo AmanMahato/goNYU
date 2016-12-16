@@ -3,7 +3,6 @@ require_once 'access.php';
 include_once '../php/queries.php';
 $uname = isset($_GET['username'])?$_GET['username']:"";
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,12 +143,12 @@ A;
 	echo $A;
 $B = <<<B
 <br/>
-<form method="post" hidden action="user_pins.php" id="user_pins">
-<input type="text" name="uname" value="$uname" hidden/>
+<form method="post" action="user_pins.php" id="user_pins">
+<input type="text" name="uname" value="$uname"/>
 </form>
 <input value="Show Photos" type="button" id="user_pins_button" class="menubutton"/>
-<form method="post" hidden action="user_boards.php" id="user_boards">
-<input type="text" name="uname" value="$uname" hidden/>
+<form method="post" action="user_boards.php" id="user_boards">
+<input type="text" name="uname" value="$uname"/>
 </form>
 <input value="Show Diary" type="button" id="user_boards_button" class="menubutton">
 <br/><br/><br/>
@@ -237,7 +236,7 @@ echo $B;
 		{
 			if($row1[1]=="Pending")
 			{
-				echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row1[0]'>$row1[0]</a> - \"$row1[2]\"<br/>";
+				echo "<a href = 'http://localhost:8888/goNYU/views/user_profile.php?username=$row1[0]'>$row1[0]</a> - \"$row1[2]\"<br/>";
 			}
 		}
 		echo '<div id="errmsg1" />';
@@ -248,7 +247,7 @@ echo $B;
 		{
 			if($row2[1]=="Rejected")
 			{
-				echo "<a href = 'http://localhost/goNYU/views/user_profile.php?username=$row2[0]'> $row2[0] </a> - \"$row2[2]\"<br/>";
+				echo "<a href = 'http://localhost:8888/goNYU/views/user_profile.php?username=$row2[0]'> $row2[0] </a> - \"$row2[2]\"<br/>";
 			}
 		}
 	}

@@ -1,21 +1,9 @@
-/* Copyright (c) 2010 CoffeeCup, All rights reserved - http://www.coffeecup.com/
-----------------------------------------------------------------------------------------------------*/
-
-/* Reset v1.0 | 20080212 - http://meyerweb.com/eric/tools/css/reset/
-----------------------------------------------------------------------------------------------------*/
-
-
-
-
-/* Spacing
-----------------------------------------------------------------------------------------------------*/
 table, tbody, tr, th, td  {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	outline: 0;
 	font-size: 100%;
-	/*vertical-align: baseline;*/
 	background: transparent;
 }
 
@@ -75,9 +63,6 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, address, fieldset {
 	margin-bottom: 10px;
 }
 
-/* Layout
-----------------------------------------------------------------------------------------------------*/
-
 html {
 		background: url(./images/login_background.jpg) no-repeat fixed;
   -webkit-background-size: cover;
@@ -129,7 +114,6 @@ header h2 {
 
 
 nav {
-    /*background: url(./images/nav_bg.png) no-repeat;*/
 	float: left;
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -164,21 +148,13 @@ nav ul li {
 	border-bottom: 1px solid #85a32f;
 }
 
-nav ul li:hover, /*.toggle_add:hover*/ {
-    /*background-color: #85a32f;*/
+nav ul li:hover,  {
     font: Verdana;
     font-size: 20px;
 	border-radius: 5px;
 	padding-left: 3px;
 }
-/*.toggle_delete:hover {
-    background-color: #ee432e;
-    font: Verdana;
-    font-size: 20px;
-	border-radius: 5px;
-	padding-left: 3px;
-	color:white;
-}*/
+
 nav ul li a {
 	cursor: pointer;
 	font-size: 1.2em;
@@ -237,9 +213,8 @@ div.show-pin{
 	margin: 1px;
 	position: relative;
 	display: inline-block;
-	zoom: 1;         /* for IE */
-	display*:inline; /* for IE */
-	/*cursor: pointer;*/
+	zoom: 1;         
+	display*:inline; 
 	margin-top: 2px;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 15px;
@@ -247,7 +222,6 @@ div.show-pin{
 	border-radius: 10px; 
 	background: url(/goNYU/css/images/pin-background.png);
 	background-size: 100%, 100%;
-
 	font-family: tahoma;
 	font-size: 15px;
 	vertical-align: top;
@@ -266,18 +240,7 @@ div.show-pin:hover {
 {
 	color: #222222;max-height: 300px; max-width: 400px
 }
-/*div.show-pin lable,div.show-pin h3 {
-	width:100%;
-}*/
-/*div.show-pin:hover lable, div.show-pin:hover h3{
-    background-color: brown;
-    font: Verdana;
-    font-size: 20px;
-	border-radius: 5px;
-	padding-left: 3px;
-	color: #BAA378;
-}
-*/
+
 #show_desc {
 		display:    block;
 		position:   fixed;
@@ -347,7 +310,6 @@ input[type=submit].formsubmit {
 	border-radius: 12px;
 	-webkit-box-shadow: inset 0 1px 0 0 white;
 	box-shadow: inset 0 1px 0 0 white;
-	/*padding: 6px 0 7px 0;*/
 	text-align: center;
 	text-shadow: 0 1px 1px #fff;
 	width: 150px;
@@ -370,7 +332,6 @@ input[type=submit].formsubmit:hover {
 	-webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
 	box-shadow: inset 0 1px 0 0 #f2f2f2;
 	color: #163659;
-	/*cursor: pointer;*/
 }
 
 input[type=submit].addbutton,button.addbutton, a.addbutton, h3.addbutton {
@@ -457,25 +418,11 @@ input[type=submit].removebutton:active, button.removebutton:active {
 	top:1px;
 }
 input[type=submit].likedButton, button.likedButton {
-	/*background-color: black;*/
 	background-image: url('/goNYU/css/images/liked.png');
 	background-repeat: no-repeat;
-		/*border-top: 1px solid #abbbcc;*/
-	/*border-left: 1px solid #a7b6c7;*/
-	/*border-bottom: 1px solid #a1afbf;*/
-	/*border-right: 1px solid #a7b6c7;*/
-	/*background-position: 7px 7px;*/
 	border-radius: 100px;
-	/*-webkit-box-shadow: inset 0 1px 0 0 white;*/
-	/*box-shadow: inset 0 1px 0 0 white;*/
-	/*padding: 6px 0 7px 0;*/
-	/*text-align: center;*/
-	/*text-shadow: 0 1px 1px #fff;*/
 	width: 32px;
 	height: 34px;
-	/*color: white;*/
-	/*font: Verdana;*/
-	/*font-size: 20px;*/
 }
 
 input[type=submit].likedButton:active, button.likedButton:active {
@@ -490,26 +437,13 @@ input[type=submit].likedButton:active, button.likedButton:active {
 }
 
 input[type=submit].unlikedButton, button.unlikedButton {
-	/*background-color: black;*/
 	background-image: url('/goNYU/css/images/unliked.png');
 	background-repeat: no-repeat;
-	/*border-top: -3px solid #abbbcc;*/
-	/*border-left: 1px solid #a7b6c7;*/
-	/*border-bottom: 0px solid #a1afbf;*/
-	/*border-right: 1px solid #a7b6c7;*/
-	/*background-position: 7px 7px;*/
 	border-radius: 100px;
-	/*-webkit-box-shadow: inset 0 1px 0 0 white;*/
-	/*box-shadow: inset 0 1px 0 0 white;*/
-	/*padding: px 2px 0px 0px;*/
-	/*text-align: center;*/
-	/*text-shadow: 0 1px 1px #fff;*/
 	width: 32px;
 	height: 34px;
-	/*color: white;*/
-	/*font: Verdana;*/
-	/*font-size: 20px;*/
 }
+
 input[type=submit].unlikedButton:active, button.unlikedButton:active {
 	border-top: 1px solid #a1afbf;
 	border-left: 1px solid #9caaba;
@@ -558,8 +492,8 @@ input[type=submit].unlikedButton:active, button.unlikedButton:active {
 	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
 	background-color:#6c7c7c;
-	/*font-size:20px;*/
 }
+
 .menubutton:active {
 	top:1px;
 }
@@ -574,25 +508,13 @@ input[type=submit].unlikedButton:active, button.unlikedButton:active {
 }
 
 button.unpin {
-	/*background-color: black;*/
 	background-image: url('/goNYU/css/images/unpin.png');
 	background-repeat: no-repeat;
 	border-top: 1px solid #abbbcc;
 	border-left: 1px solid #a7b6c7;
 	border-bottom: 1px solid #a1afbf;
 	border-right: 1px solid #a7b6c7;
-	/*background-position: -2px -3px;*/
 	border-radius: 100px;/*
-	-webkit-box-shadow: inset 0 1px 0 0 white;
-	box-shadow: inset 0 1px 0 0 white;*/
-	/*padding: 0 px 0 7px 0;*//*
-	text-align: center;
-	text-shadow: 0 1px 1px #fff;*/
-	width: 34px;
-	height: 32px;/*
-	color: white;
-	font: Verdana;
-	font-size: 20px;*/
 }
 
 
@@ -609,9 +531,8 @@ div.show-pin2{
 	margin: 1px;
 	position: relative;
 	display: inline-block;
-	zoom: 1;         /* for IE */
-	display*:inline; /* for IE */
-	/*cursor: pointer;*/
+	zoom: 1;         
+	display*:inline; 
 	margin-top: 2px;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 12px;
@@ -641,15 +562,14 @@ div.image-upload
     max-height:400px;
     vertical-align: middle;
 	text-align: center;
-
 	border-style:solid;
 	border-width: 1px;
 	padding :15px;
 	margin: 1px;
 	position: relative;
 	display: inline-block;
-	zoom: 1;         /* for IE */
-	display*:inline; /* for IE */
+	zoom: 1;         
+	display*:inline; 
 	cursor: pointer;
 	margin-top: 2px;
 	font-family: Tahoma, Geneva, sans-serif;

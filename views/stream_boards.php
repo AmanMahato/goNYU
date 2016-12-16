@@ -35,7 +35,6 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 						}
 						else {
 							loadBoards($boards,$boards_desc,{view_mode:"stream", stream_id:stream_id},$delete_boards);
-							//loadBoards($boards,$boards_desc,$delete_boards);
 							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Board added successfully</p>").show().fadeOut(5000);
 							$("#add_board").slideToggle("slow");
 						}
@@ -51,7 +50,6 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 						}
 						else {
 							loadBoards($boards,$boards_desc,{view_mode:"stream", stream_id:stream_id},$delete_boards);
-							//loadBoards($boards,$boards_desc,$delete_boards);
 							$("#errmsg").html(data.errormsg+"<p class='ui-success'>Board deleted successfully</p>").show().fadeOut(5000);
 							$("#delete_board").slideToggle("slow");
 						}
@@ -111,7 +109,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 <form class="toggle_menu" id="toggle_boards">
 	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Diary</a>
 	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
-</form>			<!-- <div style="text-align:left;"> -->
+</form>		
 			
 			<table stlyle="width=100%">
 			<tr>

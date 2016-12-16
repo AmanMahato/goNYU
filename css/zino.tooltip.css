@@ -1,12 +1,3 @@
-/*!
- * ZinoUI v1.4 (http://zinoui.com)
- * Copyright 2012-2013 Dimitar Ivanov. All Rights Reserved.
- * 
- * Zino UI commercial licenses may be obtained at http://zinoui.com/license
- * If you do not own a commercial license, this file shall be governed by the
- * GNU General Public License (GPL) version 3.
- * For GPL requirements, please review: http://www.gnu.org/copyleft/gpl.html
- */
 .zui-tooltip{
 	background: #60a4ee; 
 	background: -moz-linear-gradient(top,  #60a4ee 0%, #5590d2 100%); 
@@ -16,7 +7,6 @@
 	background: -ms-linear-gradient(top,  #60a4ee 0%,#5590d2 100%); 
 	background: linear-gradient(to bottom,  #60a4ee 0%,#5590d2 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60a4ee', endColorstr='#5590d2',GradientType=0 ); 
-
 	border: 1px solid #3376C2;
 	color: #fff;
 	display: none;
@@ -30,6 +20,5 @@
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	
 	max-width: 300px;
 }

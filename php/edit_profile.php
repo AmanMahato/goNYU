@@ -2,7 +2,6 @@
 require_once '../views/access.php';
 include_once '../php/queries.php';
 ?>
-
 <html>
 <head>
 	<link href="../css/default.css" rel="stylesheet">
@@ -18,13 +17,12 @@ include_once '../php/queries.php';
 							$("#errmsg").html("<p class='ui-info'>" + data.errormsg + "</p>").show().fadeOut(7000);
 						} else {
 							alert("Profile was successfully updated!!");
-							document.location = "/impressions/views/user_profile.php";
+							document.location = "/goNYU/views/user_profile.php";
 						}		
 					}, 'json');
-//---------------------------------------------------------------------------------------------------------------
 				});
 				$("#cancel").click(function(){
-					document.location = "/impressions/views/user_profile.php";
+					document.location = "/goNYU/views/user_profile.php";
 				});
 				$("#menu_pins").click(function(){
         				$(".toggle_menu").not("#toggle_pins").slideUp(500,function(){
@@ -50,23 +48,22 @@ include_once '../php/queries.php';
 			<table>
 				<td><a class="addbutton menu_button" id="menu_pins">Pins</a>
 				<a class="addbutton menu_button" id="menu_boards">Boards</a>
-				<a href="/impressions/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
-				<a href="/impressions/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
-				<a href="/impressions/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a></td>
+				<a href="/goNYU/views/my_streams.php"class="addbutton menu_button" id="menu_streams">Streams</a>
+				<a href="/goNYU/views/user_profile.php" class="addbutton menu_button" id="menu_user">User Accounts</a>
+				<a href="/goNYU/views/my_friends.php" class="addbutton menu_button" id="menu_user">My Friends</a></td>
 			</table>
 		</a>
 	</h1>
 </header>
 <form class="toggle_menu" id="toggle_pins">
-	<a href="/impressions/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
-	<a href="/impressions/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
+	<a href="/goNYU/views/my_pins.php" class="addbutton menu_button" id="menu_my_pins">My Pins</a>
+	<a href="/goNYU/views/all_pins.php" class="addbutton menu_button" id="menu_search_pins">Search Pins</a>
 </form>
 <form class="toggle_menu" id="toggle_boards">
-	<a href="/impressions/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
-	<a href="/impressions/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
+	<a href="/goNYU/views/my_boards.php" class="addbutton menu_button" id="menu_my_boards">My Boards</a>
+	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Boards</a>
 </form>
 <?php
-
 $B = <<<B
 <form enctype="multipart/form-data" action="../php/uploader.php" method="post" id="center1" style="margin:auto;">
 Choose a file to upload: 
@@ -76,16 +73,12 @@ Choose a file to upload:
 <input value="Upload File" type="submit" class="addbutton">
 </form>
 B;
-
 $result = get_user_details("{$_SESSION['uname']}");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result,MYSQLI_NUM);
 $location = "../users/".$_SESSION['uname']."/userprofilepic.jpg";
-
-
 $male_checked = "";
 $female_checked = "";
 $nd_checked = "";
-
 if($row[4]=="Male")
 	$male_checked = 'checked';
 if($row[4]=="Female")
@@ -93,7 +86,6 @@ if($row[4]=="Female")
 if($row[4]=="Not Declared")
 	$nd_checked = 'checked';
 $C = <<<C
-
 		<form action="../php/update_user.php" id="uuser" method="post" style="margin:auto;">
 		<div class='show-pin'>
 		<img class="show-pin" src=$location alt="User Profile Picture">
@@ -108,14 +100,10 @@ $C = <<<C
 				<tr><td>Language</td><td><input type="text" name="language" value="$row[5]"/></td></tr>
 				<tr><td>Country</td><td><input type="text" name="country" value="$row[6]"/></td></tr>
 				<tr><td><hr></td><td><hr></td></tr>
-				<tr><td><input value="Save" type="submit" name="save" class="menubutton"/></td><td><input value="Cancel" class="menubutton" type="button" name="save" id="cancel" /></td></tr>
-				
+				<tr><td><input value="Save" type="submit" name="save" class="menubutton"/></td><td><input value="Cancel" class="menubutton" type="button" name="save" id="cancel" /></td></tr>		
 			</table>
 		</form>
-		
-
 C;
-
 echo $C;
 echo "<br/>";
 echo $B;

@@ -1,12 +1,9 @@
 <?php
 include_once 'queries.php';
 require_once '../views/access.php';
-
-
 $user = $_SESSION['uname'];
 $friend = key_exists('invited_user', $_POST) ? $_POST['invited_user'] : "";
 $message = key_exists('Message', $_POST) ? $_POST['Message'] : "";
-
 $error = array('errorcode' => 0);
 $error['errormsg'] = "";
 if ($user == "")
@@ -28,10 +25,5 @@ if ($error['errorcode'] == 0)
 		$error['errormsg'] = $errmsg;
 	} 
 }
-
 echo json_encode($error);
-
-
-
-
 ?>

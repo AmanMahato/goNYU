@@ -1,11 +1,8 @@
 <?php
 include_once 'queries.php';
 require_once '../views/access.php';
-
-
 $user = $_SESSION['uname'];
 $friend = key_exists('invited_user', $_POST) ? $_POST['invited_user'] : "";
-
 $error = array('errorcode' => 0);
 $error['errormsg'] = "";
 if ($user == "")

@@ -1,8 +1,6 @@
 <?php
 session_start();
 include_once 'queries.php';
-/*Should check if pins should be shown for a user or for a board or for a stream or all
- * Should check sort criteria*/
 $view_mode = isset($_POST['view_mode']) ? $_POST['view_mode'] : "all";
 $conditions = array();
 $sort_by = isset($_POST['sort_by']) ? $_POST['sort_by'] : "";
@@ -31,5 +29,4 @@ for ($i = 0; $i < count($boards); $i++) {
 	$boardlist[$i] = json_encode($boards[$i]);
 }
 echo json_encode($boardlist);
-
 ?>
