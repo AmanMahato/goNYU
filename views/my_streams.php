@@ -112,7 +112,6 @@ require_once 'access.php';
 				<td><button class="toggle_delete togglebar removebutton" style="text-align:left;">Delete Interest</button></td>
 			</tr>
 		</table>
-<!--<h3 class="toggle_add" style="text-align:left;">Add Stream</h3>-->
 				<form id="add_stream" class="toggleform">
 					<table border=1>
 						<tr>
@@ -128,12 +127,10 @@ require_once 'access.php';
 							</td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="Add Stream" class="addbutton" style="width:100%"/></td>
+							<td><input type="submit" value="Add Interest" class="addbutton" style="width:100%"/></td>
 						</tr>
 					</table>
 				</form>
-
-				<!--<h3 class="toggle_delete" style="text-align:left;">Delete Stream</h3>-->
 				<form id="delete_stream" class="toggleform">
 					<table border=1>
 						<tr>
@@ -154,9 +151,6 @@ require_once 'access.php';
 					</table>
 				</form>
 		<div id="errmsg"></div>
-
-		<!-- Actual Stream data is loaded here -->
-
 		<table>
 			<tr>
 				<td style="width:80%">

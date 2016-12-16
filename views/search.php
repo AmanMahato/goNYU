@@ -91,15 +91,12 @@ if(isset($_POST['invited_user']))
 <form action="./search_query.php" method="post" style="margin:auto;">
 Search:
 <input name="search_term" type="text" class="tag" size="50" >
-
 <input value="Search" type="submit">
 </form>
 <?php
-
 if($error==100)
 {
 		echo "<form action='' method='post' style='margin:auto;'>";
-	
 		echo "<table border='0' align='center'>"; 		
 		$sql1="SELECT fname,lname,user_id FROM user WHERE user_id NOT IN (select friend_id from friends where user_ID like '%$uname%') AND user_id NOT IN (select user_id from friends where friend_id like '%$uname%') AND (fname like '%$searchdata%' OR lname like '%$searchdata%') AND user_id !='%$uname%'" ;
 		$result1 = mysqli_query($conn,$sql1);

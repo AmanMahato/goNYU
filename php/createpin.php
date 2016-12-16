@@ -79,8 +79,6 @@ if ($data['errorcode'] == 0) {
 		$data['errorcode'] =1;
 		$data['errormsg'] .= $errmsg;
 	} else {
-		//copy file to images folder here
-
 		if($upload_method=="url")
 		{
 			function test_input($data)

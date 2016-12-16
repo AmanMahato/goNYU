@@ -12,21 +12,18 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 		var user_id = "<?php echo $user_id; ?>";
 			$(document).ready(function() {
 			var $pins = $("#pins");
-
 	loadPins($pins,{view_mode:"all"},user_id);
 			$("#menu_pins").click(function(){
         				$(".toggle_menu").not("#toggle_pins").slideUp(500,function(){
         					$("#toggle_pins").slideToggle();
         				});
         			});
-
         			$("#menu_boards").click(function(){
         				$(".toggle_menu").not("#toggle_boards").slideUp(500,function(){
         					$("#toggle_boards").slideToggle();
         				});
         			});
         			$(".toggle_menu").hide();
-        			
 			});
 		</script>
 	</head>

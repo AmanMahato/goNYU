@@ -13,13 +13,11 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
 			$(document).ready(function() {
 		var $pins = $("#pins");
 		loadPins($pins,{view_mode:"user", uname:uname});
-
 		$("#menu_pins").click(function(){
         				$(".toggle_menu").not("#toggle_pins").slideUp(500,function(){
         					$("#toggle_pins").slideToggle();
         				});
         			});
-
         			$("#menu_boards").click(function(){
         				$(".toggle_menu").not("#toggle_boards").slideUp(500,function(){
         					$("#toggle_boards").slideToggle();
@@ -27,7 +25,6 @@ $uname = isset($_POST['uname'])?$_POST['uname']:"";
         			});
         			$(".toggle_menu").hide();        			
 			});
-
 		</script>
 	</head>
 	<body>

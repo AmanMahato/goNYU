@@ -137,7 +137,7 @@ $("#menu_pins").click(function(){
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description"></textarea></td>
 					</tr>
 					<tr>
-						<td><label>Comment Privacy Setting</label></td>
+						<td><label>Privacy Setting</label></td>
 						<td style="text-align:left;">
 							<select name="comment_privacy">
 								<option value="Friends">Friends</option>
@@ -147,7 +147,7 @@ $("#menu_pins").click(function(){
 						</td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Add Board" class="addbutton" style="width:100%"/></td>
+						<td><input type="submit" value="Add Diary" class="addbutton" style="width:100%"/></td>
 					</tr>
 				</table>
 			</form>
@@ -161,7 +161,7 @@ $("#menu_pins").click(function(){
 						<td style="vertical-align:middle;"><label>Description</label></td><td><textarea name="description" disabled></textarea></td>
 					</tr>
 					<tr>
-						<td><label>Comment Privacy Setting</label></td>
+						<td><label>Privacy Setting</label></td>
 						<td style="text-align:left;">
 							<input type="text" disabled>
 						</td>
@@ -171,9 +171,6 @@ $("#menu_pins").click(function(){
 					</tr>
 				</table>
 			</form>
-
-		<!-- The actual Board List starts here -->
-
 		<table border=1 bgcolor="#0066CC">
 			<tr>
 				<td style="width:95%">

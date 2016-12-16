@@ -791,31 +791,31 @@ function check_friendship($user, $friend, &$err_msg)
 	$result1=mysqli_query($con,"SELECT * FROM friends WHERE (user_id = '$user' AND friend_id = '$friend') OR (user_id = '$friend' AND friend_id = '$user')");
 	if (mysqli_num_rows($result1)> 0) 
 	{
-		$err_msg = 1; //Already friends
+		$err_msg = 1; 
 		return;
 	}
 	$result2=mysqli_query($con,"SELECT * FROM friend_request WHERE user_id='$user' and friend_id='$friend' and status='Pending'");
 	if (mysqli_num_rows($result2) > 0) 
 	{
-		$err_msg = 2;	//You have sent an invite
+		$err_msg = 2;
 		return;
 	}
 	$result3=mysqli_query($con,"SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Pending'");
 	if (mysqli_num_rows($result3) > 0) 
 	{
-		$err_msg = 3;		//Invitation is sent by friend
+		$err_msg = 3;		
 		return;
 	}
 	$result4=mysqli_query($con,"SELECT * FROM friend_request WHERE friend_id='$user' and user_id='$friend' and status='Rejected'");
 	if (mysqli_num_rows($result4)> 0) 
 	{
-		$err_msg = 4;	//Not a friend BUT invitation is sent by friend AND you have rejected this request.
+		$err_msg = 4;	
 		return;
 	}
 	$result5=mysqli_query($con,"SELECT * FROM friend_request WHERE (friend_id='$friend' AND user_id='$user') OR (friend_id='$user' AND user_id='$friend')");
 	if (mysqli_num_rows($result5) == 0) 
 	{
-		$err_msg = 5; 		//Not a friend AND no invite
+		$err_msg = 5; 	
 		return;
 	}
 	dbClose($con);

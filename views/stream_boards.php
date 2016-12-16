@@ -137,7 +137,7 @@ $stream_name = key_exists('stream_name', $_POST) ? $_POST['stream_name'] : "";
 						</td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Add Board" class="addbutton" style="width:100%"/></td>
+						<td><input type="submit" value="Add Diary" class="addbutton" style="width:100%"/></td>
 					</tr>
 				</table>
 			</form>

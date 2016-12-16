@@ -13,27 +13,19 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 		<script type="text/javascript">
 			var pin_id = <?php echo $pin_id; ?>;
 			var user_id = "<?php echo $user_id; ?>";
-
 			$(document).ready(function(){
 				$("#pin_id").val(pin_id);
 				var $comment_list = $("#comment_list");
-
 				viewPin(pin_id,user_id);
 				loadComments($comment_list);
-
 				$("#comment_pin_id").val(pin_id);
-
 				$("#like_pin").submit(function(event){
 					event.preventDefault();
 					$.post("../php/toggle_like.php", $(this).serialize(), function(data) {
-							// like_errmsg
 							viewPin(pin_id,user_id);
 						}, 'json');
 				});
-
 				$("#post_comments").ajaxForm(function (data) {
-					// event.preventDefault();
-					// post comment
 					data = jQuery.parseJSON(data);
 					if (data.errorcode == 1) {
 						$("#errmsg").html(data.errormsg).show().fadeOut(5000);
@@ -42,7 +34,6 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 						loadComments($comment_list);
 					}
 				},'json');
-
 				$.post("../php/show_boards.php", {
 					view_mode:"my"
 				}, function(data) {
@@ -52,10 +43,8 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 						$boards.append("<option value='" + board.board_id + "'>" + board.name + "</option>");
 					}
 				}, 'json');
-
 				$("#repin").hide();
 				$("#unpin").hide();
-
 				$(".toggle_repin").click(function(){
 					$(".toggleform").not("#repin").slideUp(500,function(){
 							$("#repin").slideToggle("slow");
@@ -72,7 +61,6 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 						$("#unpin").find("[name=title]").focus();
 					});
 				});
-
 				$('#repin').ajaxForm(function(data) { 
 					data = jQuery.parseJSON(data);
 					if (data.errorcode == 1) {
@@ -89,7 +77,6 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
         					$("#toggle_pins").slideToggle();
         				});
         			});
-
         			$("#menu_boards").click(function(){
         				$(".toggle_menu").not("#toggle_boards").slideUp(500,function(){
         					$("#toggle_boards").slideToggle();
@@ -124,12 +111,8 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 	<a href="/goNYU/views/all_boards.php" class="addbutton menu_button" id="menu_search_boards">Search Diary</a>
 </form>		<table stlyle="width=100%">
 			<tr>
-			<!-- 	<td><button class="toggle_repin menubutton" style="text-align:left;">Re-Pin</button></td>
-				<td><button class="toggle_unpin menubutton" style="text-align:left;">Un-Pin</button></td> -->
 			</tr>
 		</table>
-
-
 		<form id="unpin" class="toggleform">
 			<table>
 					<tr><td><label>Title</label></td><td><input type="text" name="title"/></td></tr>
@@ -139,9 +122,6 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 					<tr><td><input type="submit" class="addbutton" value="Add Pin"/></td></tr>
 				</table>
 		</form>
-
-
-
 		<form id="repin" class="toggleform" method="post" action="/goNYU/php/repin.php">
 			<table>
 					<input type="text" name = "root_pin_id" hidden />
@@ -152,7 +132,6 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 				</table>
 		</form></td></tr>
 		<tr><td>
-		<!-- Pin Details -->
 		<form id="like_pin" class="show-pin" style="margin:auto;">
 			<input type="text" id="likes_pin_id" name = "pin_id" hidden />
 			<input type="text" id="likes_pic_id" hidden name="pic_id" />
@@ -166,16 +145,14 @@ $user_id = isset($_SESSION['uname'])?$_SESSION['uname']:"";
 				<tr><td>Tags: </td><td style="text-align:center;"><div id="pin_tags" ></div></td></tr>
 				</table>
 		</form>
-		<!-- Comments are handeled here -->
 		<form id="post_comments" style="margin:auto;" method="post" action="/goNYU/php/createcomment.php">
 			<input type="hidden" id="comment_pin_id" name="pin_id" value="<?php echo $pin_id; ?>">
 			<table style="width:100%">
 				<tr><td colspan="2" style="text-align:left;"><input type="text" name="message" style="width:100%;"/></td></tr>
-				<tr><td></td><td style="text-align:right;"><input type="submit" class="formsubmit" value="Post"/></td></tr>
+				<tr><td></td><td style="text-align:right;"><input type="submit" class="formsubmit" value="Comment"/></td></tr>
 			</table>
 				<div id="comment_list"></div>
 		</form>
-		<!-- <div id="pin_comments"> </div> -->
 		<div id="like_errmsg"> </div>
 		<div id="errmsg"> </div>
 	</body>
