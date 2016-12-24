@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>goNYU</title>
+		<link href="/goNYU/css/default_Login.css" rel="stylesheet" />
+		<script src="/goNYU/js/jquery.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#cuser").submit(function(event) {
+					event.preventDefault();
+					$("#errmsg").hide();
+					$.post('/goNYU/php/createuser.php', $(this).serialize(), function(data) {
+						if (data.errorcode == 1) {
+							$("#errmsg").html("<p>" + data.errormsg + "</p>").show();
+						} else if (data.errorcode == 2) {
+							$("#errmsg").html("<p>" + data.errormsg + "</p>").show();
+						} else {
+							alert("Account was created successfully.\nPlease try to login with your new account");
+							window.location.replace('/goNYU/index.php');
+						}
+					}, 'json');
+				});
+			});
+		</script>
+	</head>
+
+	<div align="center">
+		<a href="/goNYU"><img src="/goNYU/css/images/logo_large.png" alt="logo" /></a>
+		
+		<form action="/" id="cuser" >
+			<table>
+				<tr><td><label>User Name</label></td><td><input type="text" name="uname" /></td></tr>
+				<tr><td><label>Password</label></td><td><input type="password" name="pwd"/></td></tr>
+				<tr><td><label>First Name</label></td><td><input type="text" name="fname"/></td></tr>
+				<tr><td><label>Last Name</label></td><td><input type="text" name="lname"/></td></tr>
+				<tr><td><label>Gender</label></td><td><label>Male</label> <input type="radio" name="gender" value="Male"/>&nbsp;<label>Female</label><input type="radio" name="gender" value="Female"/><br/>
+				<tr><td><label>Email</label></td><td><input type="text" name="email" /></td></tr>
+				<tr><td><br><input type="submit" value="Submit" /></td><td><br>Already Have Account?? <a href = "access.php">Sign In</a></td></tr>
+
+			</table>
+		</form>
+	</div>
+	<div class="ui-error" hidden id="errmsg"/>
+</html>
